@@ -1,8 +1,7 @@
 package api
 
 import (
-	"net/http"
-
+	"github.com/HosseinRouhi79/golang-clean-web-api/src/api/routers"
 	"github.com/gin-gonic/gin"
 )
 
@@ -12,10 +11,9 @@ func InitServer() {
 
 	v1 := r.Group("/api/v1/")
 	{
-		v1.GET("health", func(c *gin.Context) {
-			c.JSON(http.StatusOK, "OK!")
-		})
-	}
+		healthGroup := v1.Group("health")
+		routers.Health(healthGroup)
+	} 
 	r.Run(":8081")
 
 }
