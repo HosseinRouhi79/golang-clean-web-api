@@ -53,3 +53,12 @@ func (q Test) QueryBind(c *gin.Context) {
 		"name": name,
 	})
 }
+
+func (u Test) UriBind(c *gin.Context) {
+	id := c.Param("id") //using QueryArray instead of Query in case we have many ids
+	name := c.Param("name")
+	c.JSON(http.StatusOK, gin.H{
+		"ID": id,
+		"name": name,
+	})
+}

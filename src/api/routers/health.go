@@ -16,4 +16,5 @@ func Test(r *gin.RouterGroup){
 	handler := handlers.NewTest()
 	r.GET("/", handler.HeaderBind)
 	r.GET("/query", handler.QueryBind)
+	r.GET("/query2/:id/:name", handler.UriBind)
 }
