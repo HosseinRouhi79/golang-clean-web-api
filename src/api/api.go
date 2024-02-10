@@ -2,10 +2,13 @@ package api
 
 import (
 	"github.com/HosseinRouhi79/golang-clean-web-api/src/api/routers"
+	"github.com/HosseinRouhi79/golang-clean-web-api/src/config"
 	"github.com/gin-gonic/gin"
+	"fmt"
 )
 
 func InitServer() {
+	cfg := config.GetConfig()
 	r := gin.New()
 	r.Use(gin.Logger(), gin.Recovery()) // => r1 := gin.Default()
 
@@ -14,6 +17,8 @@ func InitServer() {
 		healthGroup := v1.Group("health")
 		routers.Health(healthGroup)
 	} 
-	r.Run(":8081")
+	if err := r.Run(fmt.Sprintf(":%s", cfg.Server.InternalPort)); err != nil {
+		panic(err)
+	}
 
 }
