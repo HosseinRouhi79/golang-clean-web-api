@@ -8,8 +8,8 @@ import (
 )
 
 type Health struct{}
-type Test struct{
-	UserID string `json:"userID"`
+type Test struct {
+	UserID  string `json:"userID"`
 	Browser string `json:"browser"`
 }
 
@@ -35,12 +35,21 @@ func (h Health) HealthPostByID(c *gin.Context) {
 	c.JSON(http.StatusOK, fmt.Sprintf("health GET: %v", id))
 }
 
-func (t Test) HeaderBind(c *gin.Context){
+func (t Test) HeaderBind(c *gin.Context) {
 	if err := c.BindHeader(&t); err != nil {
 		panic("Error binding")
 	}
 	c.JSON(http.StatusOK, gin.H{
 		"Browser": t.Browser,
-		"ID": t.UserID,
+		"ID":      t.UserID,
+	})
+}
+
+func (q Test) QueryBind(c *gin.Context) {
+	id := c.Query("id") //using QueryArray instead of Query in case we have many ids
+	name := c.Query("name")
+	c.JSON(http.StatusOK, gin.H{
+		"ID": id,
+		"name": name,
 	})
 }

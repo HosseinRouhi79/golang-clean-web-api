@@ -15,4 +15,5 @@ func Health(r *gin.RouterGroup) {
 func Test(r *gin.RouterGroup){
 	handler := handlers.NewTest()
 	r.GET("/", handler.HeaderBind)
+	r.GET("/query", handler.QueryBind)
 }
