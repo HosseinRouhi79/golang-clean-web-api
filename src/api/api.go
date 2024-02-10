@@ -17,6 +17,13 @@ func InitServer() {
 		healthGroup := v1.Group("health")
 		routers.Health(healthGroup)
 	} 
+
+	v2 := r.Group("/api/v1/")
+	{
+		testGroup := v2.Group("test")
+		routers.Test(testGroup)
+	}
+
 	if err := r.Run(fmt.Sprintf(":%s", cfg.Server.InternalPort)); err != nil {
 		panic(err)
 	}

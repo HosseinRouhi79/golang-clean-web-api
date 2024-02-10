@@ -11,3 +11,8 @@ func Health(r *gin.RouterGroup) {
 	r.POST("/", handler.HealthPost)
 	r.GET("/:id", handler.HealthPostByID)
 }
+
+func Test(r *gin.RouterGroup){
+	handler := handlers.NewTest()
+	r.GET("/", handler.HeaderBind)
+}
