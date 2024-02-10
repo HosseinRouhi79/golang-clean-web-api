@@ -24,6 +24,12 @@ func InitServer() {
 		routers.Test(testGroup)
 	}
 
+	v3 := r.Group("/api/v3/")
+	{
+		formGroup := v3.Group("form")
+		routers.BodyBinder(formGroup)
+	}
+
 	if err := r.Run(fmt.Sprintf(":%s", cfg.Server.InternalPort)); err != nil {
 		panic(err)
 	}

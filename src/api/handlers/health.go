@@ -12,6 +12,10 @@ type Test struct {
 	UserID  string `json:"userID"`
 	Browser string `json:"browser"`
 }
+type PersonData struct {
+	FirstName string
+	LastName string
+}
 
 func NewHealth() *Health {
 	return &Health{}
@@ -61,4 +65,17 @@ func (u Test) UriBind(c *gin.Context) {
 		"ID": id,
 		"name": name,
 	})
+}
+
+func (p PersonData) BodyBind (c *gin.Context) {
+	
+	err := c.ShouldBind(&p)
+
+	if err != nil {
+		c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{
+			"result": true,
+			"person": p,
+		})
+	}
+	c.JSON(http.StatusOK, p)
 }

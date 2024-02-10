@@ -12,9 +12,14 @@ func Health(r *gin.RouterGroup) {
 	r.GET("/:id", handler.HealthPostByID)
 }
 
-func Test(r *gin.RouterGroup){
+func Test(r *gin.RouterGroup) {
 	handler := handlers.NewTest()
 	r.GET("/", handler.HeaderBind)
 	r.GET("/query", handler.QueryBind)
 	r.GET("/query2/:id/:name", handler.UriBind)
+}
+
+func BodyBinder(r *gin.RouterGroup) {
+	handler := handlers.PersonData{}
+	r.POST("/", handler.BodyBind)
 }
