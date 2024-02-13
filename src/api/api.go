@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 
+	"github.com/HosseinRouhi79/golang-clean-web-api/src/api/middlewares"
 	"github.com/HosseinRouhi79/golang-clean-web-api/src/api/routers"
 	"github.com/HosseinRouhi79/golang-clean-web-api/src/api/validation"
 	"github.com/HosseinRouhi79/golang-clean-web-api/src/config"
@@ -26,7 +27,7 @@ func InitServer() {
 			log.Print(err.Error())
 		}
 	}
-	r.Use(gin.Logger(), gin.Recovery()) // => r1 := gin.Default()
+	r.Use(gin.Logger(), gin.Recovery(), middlewares.Limitter()) // => r1 := gin.Default()
 
 	v1 := r.Group("/api/v1/")
 	{
