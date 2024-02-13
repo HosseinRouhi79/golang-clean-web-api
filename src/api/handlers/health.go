@@ -13,8 +13,10 @@ type Test struct {
 	Browser string `json:"browser"`
 }
 type PersonData struct {
-	FirstName string
-	LastName string
+	FirstName string `json:"first_name" binding:"required"`
+	LastName  string `json:"last_name" binding:"required"`
+	Mobile    string `json:"mobile" binding:"mobile"`
+	Password  string `json:"password" binding:"password"`
 }
 
 func NewHealth() *Health {
@@ -53,29 +55,30 @@ func (q Test) QueryBind(c *gin.Context) {
 	id := c.Query("id") //using QueryArray instead of Query in case we have many ids
 	name := c.Query("name")
 	c.JSON(http.StatusOK, gin.H{
-		"ID": id,
+		"ID":   id,
 		"name": name,
 	})
 }
 
 func (u Test) UriBind(c *gin.Context) {
-	id := c.Param("id") //using QueryArray instead of Query in case we have many ids
+	id := c.Param("id")
 	name := c.Param("name")
 	c.JSON(http.StatusOK, gin.H{
-		"ID": id,
+		"ID":   id,
 		"name": name,
 	})
 }
 
-func (p PersonData) BodyBind (c *gin.Context) {
-	
+func (p PersonData) BodyBind(c *gin.Context) {
+
 	err := c.ShouldBind(&p)
 
 	if err != nil {
 		c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{
-			"result": true,
-			"person": p,
+			"result": false,
+			"error":  err.Error(),
 		})
+		return
 	}
 	c.JSON(http.StatusOK, p)
 }
