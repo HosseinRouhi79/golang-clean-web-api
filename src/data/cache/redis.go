@@ -2,12 +2,14 @@ package cache
 
 import (
 	"fmt"
-	"log"
 	"time"
 
 	"github.com/HosseinRouhi79/golang-clean-web-api/src/config"
+	logger "github.com/HosseinRouhi79/golang-clean-web-api/src/logs"
 	"github.com/go-redis/redis/v7"
 )
+
+var zLog = logger.Logger()
 
 type single struct{}
 
@@ -15,8 +17,9 @@ var singleton *single
 
 var redisClient *redis.Client
 
-func InitRedis(cfg *config.Config) error {
-	if singleton != nil {
+func InitRedis(cfg *config.Config) (*single) {
+	if singleton == nil {
+		zLog.Info().Msg("creating redis connection...")
 		redisClient = redis.NewClient(&redis.Options{
 			Addr:               fmt.Sprintf("%s:%s", cfg.Redis.Host, cfg.Redis.Port),
 			Password:           cfg.Redis.Password,
@@ -29,16 +32,11 @@ func InitRedis(cfg *config.Config) error {
 			IdleTimeout:        500 * time.Millisecond,
 			IdleCheckFrequency: cfg.Redis.IdleCheckFrequency * time.Millisecond,
 		})
-
-		_, err := redisClient.Ping().Result()
-		if err != nil {
-			return err
-		}
 		singleton = &single{}
-		return nil
+		return singleton
 	} else {
-		log.Println("redis is already created")
-		return nil
+		zLog.Info().Msg("redis is already created")
+		return singleton
 	}
 }
 

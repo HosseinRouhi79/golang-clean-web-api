@@ -8,8 +8,8 @@ import (
 
 func main() {
 	cfg := config.GetConfig()
+	cache.InitRedis(cfg)
+	// cache.InitRedis(cfg)
 	api.InitServer(cfg)
-	cache.InitRedis(cfg)
-	cache.InitRedis(cfg)
 	defer cache.CloseRedis()
 }
