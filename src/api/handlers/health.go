@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/HosseinRouhi79/golang-clean-web-api/src/api/validation"
 	"github.com/gin-gonic/gin"
 )
 
@@ -72,11 +73,13 @@ func (u Test) UriBind(c *gin.Context) {
 func (p PersonData) BodyBind(c *gin.Context) {
 
 	err := c.ShouldBind(&p)
+	veArr := validation.GetValidationError(err)
 
 	if err != nil {
 		c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{
 			"result": false,
 			"error":  err.Error(),
+			"validationError": veArr,
 		})
 		return
 	}
