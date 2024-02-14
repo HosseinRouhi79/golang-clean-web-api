@@ -13,8 +13,7 @@ import (
 	"github.com/go-playground/validator/v10"
 )
 
-func InitServer() {
-	cfg := config.GetConfig()
+func InitServer(cfg *config.Config) {
 	r := gin.New()
 	val, ok := binding.Validator.Engine().(*validator.Validate)
 	if ok {
