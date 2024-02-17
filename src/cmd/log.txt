@@ -1,3 +1,6 @@
 {"level":"info","AppName":"Audit System","time":"2024-02-17T08:51:59Z","message":"creating redis connection..."}
 {"level":"info","AppName":"Audit System","time":"2024-02-17T08:51:59Z","message":"redis is already created"}
 {"level":"info","AppName":"Audit System","time":"2024-02-17T08:51:59Z","message":"creating postgres connection..."}
+{"level":"info","AppName":"Audit System","time":"2024-02-17T09:49:33Z","message":"creating redis connection..."}
+{"level":"info","AppName":"Audit System","time":"2024-02-17T09:49:33Z","message":"redis is already created"}
+{"level":"info","AppName":"Audit System","time":"2024-02-17T09:49:33Z","message":"creating postgres connection..."}

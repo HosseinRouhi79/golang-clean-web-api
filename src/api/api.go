@@ -31,6 +31,27 @@ func InitServer(cfg *config.Config) {
 	}
 	r.Use(gin.Logger(), gin.Recovery(), middlewares.Limitter()) // => r1 := gin.Default()
 
+	
+	RegisterRoute(r)
+	RegisterSwagger(r, cfg)
+	if err := r.Run(fmt.Sprintf(":%s", cfg.Server.InternalPort)); err != nil {
+		panic(err)
+	}
+
+}
+
+func RegisterSwagger(r *gin.Engine, cfg *config.Config) {
+	docs.SwaggerInfo.Title = "golang web api"
+	docs.SwaggerInfo.Description = "golang web api"
+	docs.SwaggerInfo.Version = "1.0"
+	docs.SwaggerInfo.BasePath = "/api"
+	docs.SwaggerInfo.Host = fmt.Sprintf("192.168.59.133:%s", cfg.Server.ExternalPort)
+	docs.SwaggerInfo.Schemes = []string{"http"}
+
+	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+}
+
+func RegisterRoute(r *gin.Engine)  {
 	v1 := r.Group("/api/v1/")
 	{
 		healthGroup := v1.Group("health")
@@ -48,21 +69,4 @@ func InitServer(cfg *config.Config) {
 		formGroup := v3.Group("form")
 		routers.BodyBinder(formGroup)
 	}
-
-	RegisterSwagger(r, cfg)
-	if err := r.Run(fmt.Sprintf(":%s", cfg.Server.InternalPort)); err != nil {
-		panic(err)
-	}
-
-}
-
-func RegisterSwagger(r *gin.Engine, cfg *config.Config) {
-	docs.SwaggerInfo.Title = "golang web api"
-	docs.SwaggerInfo.Description = "golang web api"
-	docs.SwaggerInfo.Version = "1.0"
-	docs.SwaggerInfo.BasePath = "/api"
-	docs.SwaggerInfo.Host = fmt.Sprintf("192.168.59.133:%s", cfg.Server.ExternalPort)
-	docs.SwaggerInfo.Schemes = []string{"http"}
-
-	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 }
