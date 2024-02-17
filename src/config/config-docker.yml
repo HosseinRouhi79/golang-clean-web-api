@@ -12,8 +12,8 @@ cors:
 postgres:
   host: postgres_container
   port: 5432
-  user: postgres
-  password: admin
+  user: admin
+  password: 123456
   dbName: car_sale_db
   sslMode: disable
   maxIdleConns: 15
@@ -21,7 +21,7 @@ postgres:
   connMaxLifetime: 5
 redis:
   host: redis_container
-  port: 6379
+  port: 6380
   password: password
   db: 0
   dialTimeout: 5
