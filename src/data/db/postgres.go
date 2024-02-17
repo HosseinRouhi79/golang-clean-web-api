@@ -21,7 +21,7 @@ func InitDB(cfg *config.Config) error {
 		var err error
 		cnn := fmt.Sprintf("host=%s port=%s password=%s user=%s sslmode=%s dbname=%s timezone=Asia/Tehran",
 			cfg.Postgres.Host, cfg.Postgres.Port, cfg.Postgres.Password, cfg.Postgres.User, cfg.Postgres.SSLMode, cfg.Postgres.DbName)
-		//we need to open a connection
+		//need to open a connection
 		dbClient, err = gorm.Open(postgres.Open(cnn), &gorm.Config{})
 		if err != nil {
 			zLog.Info().Msg("error openning")

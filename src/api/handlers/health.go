@@ -29,6 +29,15 @@ func NewTest() *Test {
 	return &Test{}
 }
 
+// HealthCheck godoc
+// @Summary Health Check
+// @Description Health Check
+// @Tags health
+// @Accept  json
+// @Produce  json
+// @Success 200 {object} helper.HTTPResponse "Success"
+// @Failure 400 {object} helper.HTTPResponse "Failed"
+// @Router /v1/health/ [get]
 func (h Health) Health(c *gin.Context) {
 	c.JSON(http.StatusOK, "health GET")
 }

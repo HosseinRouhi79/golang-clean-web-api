@@ -8,6 +8,7 @@ import (
 )
 
 func main() {
+
 	cfg := config.GetConfig()
 	cache.InitRedis(cfg)
 	cache.InitRedis(cfg)
@@ -15,7 +16,7 @@ func main() {
 	if err != nil {
 		panic("cannot connect to database(main error)")
 	}
-	
+
 	api.InitServer(cfg)
 	defer cache.CloseRedis()
 	defer db.CloseDB()
