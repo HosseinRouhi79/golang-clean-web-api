@@ -1,2 +1,3 @@
-{"level":"info","AppName":"Audit System","time":"2024-02-17T06:56:12Z","message":"creating redis connection..."}
-{"level":"info","AppName":"Audit System","time":"2024-02-17T06:56:12Z","message":"creating postgres connection..."}
+{"level":"info","AppName":"Audit System","time":"2024-02-17T07:12:37Z","message":"creating redis connection..."}
+{"level":"info","AppName":"Audit System","time":"2024-02-17T07:12:37Z","message":"creating postgres connection..."}
+{"level":"info","AppName":"Audit System","time":"2024-02-17T07:12:37Z","message":"postgres is already created"}
