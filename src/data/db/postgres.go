@@ -4,11 +4,16 @@ import (
 	"fmt"
 
 	"github.com/HosseinRouhi79/golang-clean-web-api/src/config"
+	"github.com/HosseinRouhi79/golang-clean-web-api/src/pkg/logging"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
 
 type single struct{}
+
+var cfg = config.GetConfig()
+
+var zap = logging.NewLogger(cfg)
 
 var singleton *single
 
@@ -36,8 +41,9 @@ func InitDB(cfg *config.Config) error {
 		sqlDB.SetMaxOpenConns(cfg.Postgres.MaxOpenConns)
 		sqlDB.SetConnMaxLifetime(cfg.Postgres.ConnMaxLifetime)
 		singleton = &single{}
-	} else{
-		fmt.Println("pg alraedy is created")
+		zap.Info(logging.Postgres, logging.Migration, "Postgres connected successfully", nil)
+	} else {
+		zap.Info(logging.Postgres, logging.Migration, "Postgres is already configured", nil)
 	}
 
 	return nil
