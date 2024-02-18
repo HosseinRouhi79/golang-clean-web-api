@@ -5,11 +5,9 @@ import (
 	"time"
 
 	"github.com/HosseinRouhi79/golang-clean-web-api/src/config"
-	logger "github.com/HosseinRouhi79/golang-clean-web-api/src/logs"
 	"github.com/go-redis/redis/v7"
 )
 
-var zLog = logger.Logger()
 
 type single struct{}
 
@@ -19,7 +17,7 @@ var redisClient *redis.Client
 
 func InitRedis(cfg *config.Config) (*single) {
 	if singleton == nil {
-		zLog.Info().Msg("creating redis connection...")
+		fmt.Println("creating redis connection...")
 		redisClient = redis.NewClient(&redis.Options{
 			Addr:               fmt.Sprintf("%s:%s", cfg.Redis.Host, cfg.Redis.Port),
 			Password:           cfg.Redis.Password,
@@ -35,7 +33,7 @@ func InitRedis(cfg *config.Config) (*single) {
 		singleton = &single{}
 		return singleton
 	} else {
-		zLog.Info().Msg("redis is already created")
+		fmt.Println("redis is already created")
 		return singleton
 	}
 }

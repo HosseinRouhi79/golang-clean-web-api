@@ -4,7 +4,6 @@ import (
 	"fmt"
 
 	"github.com/HosseinRouhi79/golang-clean-web-api/src/config"
-	logger "github.com/HosseinRouhi79/golang-clean-web-api/src/logs"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -13,7 +12,6 @@ type single struct{}
 
 var singleton *single
 
-var zLog = logger.Logger()
 var dbClient *gorm.DB
 
 func InitDB(cfg *config.Config) error {
@@ -24,7 +22,6 @@ func InitDB(cfg *config.Config) error {
 		//need to open a connection
 		dbClient, err = gorm.Open(postgres.Open(cnn), &gorm.Config{})
 		if err != nil {
-			zLog.Info().Msg("error openning")
 			return err
 		}
 		sqlDB, err := dbClient.DB()
@@ -33,16 +30,14 @@ func InitDB(cfg *config.Config) error {
 		}
 		err = sqlDB.Ping()
 		if err != nil {
-			zLog.Info().Msg("error connecting to database")
 			return err
 		}
 		sqlDB.SetMaxIdleConns(cfg.Postgres.MaxIdleConns)
 		sqlDB.SetMaxOpenConns(cfg.Postgres.MaxOpenConns)
 		sqlDB.SetConnMaxLifetime(cfg.Postgres.ConnMaxLifetime)
-		zLog.Info().Msg("creating postgres connection...")
 		singleton = &single{}
 	} else{
-		zLog.Info().Msg("postgres is already created")
+		fmt.Println("pg alraedy is created")
 	}
 
 	return nil
