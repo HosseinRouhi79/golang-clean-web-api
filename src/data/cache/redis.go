@@ -13,7 +13,7 @@ type single struct{}
 
 var cfg = config.GetConfig()
 
-var zap = logging.NewLogger(cfg)
+var logger = logging.NewLogger(cfg)
 
 var singleton *single
 
@@ -35,10 +35,10 @@ func InitRedis(cfg *config.Config) *single {
 			IdleCheckFrequency: cfg.Redis.IdleCheckFrequency * time.Millisecond,
 		})
 		singleton = &single{}
-		zap.Info(logging.Postgres, logging.Migration, "Redis connected successfully", nil)
+		logger.Info(logging.Redis, logging.Migration, "Redis connected successfully", nil)
 		return singleton
 	} else {
-		zap.Info(logging.Postgres, logging.Migration, "Redis is already configured", nil)
+		logger.Info(logging.Redis, logging.Migration, "Redis is already configured", nil)
 		return singleton
 	}
 }

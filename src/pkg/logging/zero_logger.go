@@ -1,8 +1,15 @@
 package logging
 
 import (
+	"fmt"
+	"os"
+	"sync"
+	"time"
+
 	"github.com/HosseinRouhi79/golang-clean-web-api/src/config"
+	"github.com/google/uuid"
 	"github.com/rs/zerolog"
+	"github.com/rs/zerolog/pkgerrors"
 )
 
 type zerologger struct {
@@ -10,46 +17,141 @@ type zerologger struct {
 	logger *zerolog.Logger
 }
 
-var zeroFinLogger *zerologger
+var zeroFinLogger *zerolog.Logger
+var zeroOnce sync.Once
 
 var zerologMap = map[string]zerolog.Level{
 	"debug": zerolog.DebugLevel,
 	"info":  zerolog.InfoLevel,
 	"warn":  zerolog.WarnLevel,
-	"error":  zerolog.ErrorLevel,
+	"error": zerolog.ErrorLevel,
 	"fatal": zerolog.FatalLevel,
 }
 
-func (l *zerologger) getLevel(*zerologMap map[string]zerolog.Level) zerolog.Level {
+func (l *zerologger) getLogLevel() zerolog.Level {
 	level, ok := zerologMap[l.cfg.Logger.Level]
 	if !ok {
-		return zerologMap.DebugLevel
+		return zerolog.DebugLevel
 	}
 	return level
 }
 
-func newZeroLogger(cfg zerolog.Config) zerologger{
+func newZeroLogger(cfg *config.Config) *zerologger {
 	zero := &zerologger{cfg: cfg}
 	zero.Init()
 	return zero
 }
 
-func (zerologger *zerologger) Init() {
+func (z *zerologger) Init() {
+	zeroOnce.Do(func() {
+		zerolog.ErrorStackMarshaler = pkgerrors.MarshalStack
+		fileName := fmt.Sprintf("%s%s-%s.%s", z.cfg.Logger.FilePath, time.Now().Format("2006-01-02 15:04:05"), uuid.New(), "log")
 
+		file, err := os.OpenFile(fileName, os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0600)
+		if err != nil {
+			panic("Could not open log file")
+		}
+		var logger = zerolog.New(file).
+			With().
+			Timestamp().
+			Str("AppName", "MyApp").
+			Str("LoggerName", "Zerolog").
+			Logger()
+
+		zerolog.SetGlobalLevel(z.getLogLevel())
+		zeroFinLogger = &logger
+
+	})
+	z.logger = zeroFinLogger
 }
 
-func Debug(message string) {}
+func (l *zerologger) Debug(cat Category, sub SubCategory, msg string, extra map[ExtraKey]interface{}) {
 
-func Debugf(message string) {}
+	l.logger.
+		Debug().
+		Str("Category", string(cat)).
+		Str("SubCategory", string(sub)).
+		Fields(logParamsToZeroParams(extra)).
+		Msg(msg)
+}
 
-func Info(message string) {}
+func (l *zerologger) Debugf(template string, args ...interface{}) {
+	l.logger.
+		Debug().
+		Msgf(template, args...)
+}
 
-func Infof(message string) {}
+func (l *zerologger) Info(cat Category, sub SubCategory, msg string, extra map[ExtraKey]interface{}) {
 
-func Fatal(message string) {}
+	l.logger.
+		Info().
+		Str("Category", string(cat)).
+		Str("SubCategory", string(sub)).
+		Fields(logParamsToZeroParams(extra)).
+		Msg(msg)
+}
 
-func Fatalf(message string) {}
+func (l *zerologger) Infof(template string, args ...interface{}) {
+	l.logger.
+		Info().
+		Msgf(template, args...)
+}
 
-func Warn(message string) {}
+func (l *zerologger) Warn(cat Category, sub SubCategory, msg string, extra map[ExtraKey]interface{}) {
 
-func Warnf(message string) {}
+	l.logger.
+		Warn().
+		Str("Category", string(cat)).
+		Str("SubCategory", string(sub)).
+		Fields(logParamsToZeroParams(extra)).
+		Msg(msg)
+}
+
+func (l *zerologger) Warnf(template string, args ...interface{}) {
+	l.logger.
+		Warn().
+		Msgf(template, args...)
+}
+
+func (l *zerologger) Error(cat Category, sub SubCategory, msg string, extra map[ExtraKey]interface{}) {
+
+	l.logger.
+		Error().
+		Str("Category", string(cat)).
+		Str("SubCategory", string(sub)).
+		Fields(logParamsToZeroParams(extra)).
+		Msg(msg)
+}
+
+func (l *zerologger) Errorf(template string, args ...interface{}) {
+	l.logger.
+		Error().
+		Msgf(template, args...)
+}
+
+func (l *zerologger) Fatal(cat Category, sub SubCategory, msg string, extra map[ExtraKey]interface{}) {
+
+	l.logger.
+		Fatal().
+		Str("Category", string(cat)).
+		Str("SubCategory", string(sub)).
+		Fields(logParamsToZeroParams(extra)).
+		Msg(msg)
+}
+
+func (l *zerologger) Fatalf(template string, args ...interface{}) {
+	l.logger.
+		Fatal().
+		Msgf(template, args...)
+}
+
+func logParamsToZeroParams(keys map[ExtraKey]interface{}) []interface{} {
+	params := make([]interface{}, 0, len(keys))
+
+	for k, v := range keys {
+		params = append(params, string(k))
+		params = append(params, v)
+	}
+
+	return params
+}
