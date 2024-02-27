@@ -18,6 +18,17 @@ import (
 
 func InitServer(cfg *config.Config) {
 	r := gin.New()
+	RegisterMainValidation()
+	r.Use(gin.Logger(), gin.Recovery(), middlewares.Limitter()) // => r1 := gin.Default()
+
+	RegisterRoute(r)
+	RegisterSwagger(r, cfg)
+	if err := r.Run(fmt.Sprintf(":%s", cfg.Server.InternalPort)); err != nil {
+		panic(err)
+	}
+}
+
+func RegisterMainValidation() {
 	val, ok := binding.Validator.Engine().(*validator.Validate)
 	if ok {
 		err := val.RegisterValidation("mobile", validation.MobileValidator, true)
@@ -29,15 +40,6 @@ func InitServer(cfg *config.Config) {
 			log.Print(err.Error())
 		}
 	}
-	r.Use(gin.Logger(), gin.Recovery(), middlewares.Limitter()) // => r1 := gin.Default()
-
-	
-	RegisterRoute(r)
-	RegisterSwagger(r, cfg)
-	if err := r.Run(fmt.Sprintf(":%s", cfg.Server.InternalPort)); err != nil {
-		panic(err)
-	}
-
 }
 
 func RegisterSwagger(r *gin.Engine, cfg *config.Config) {
@@ -51,7 +53,7 @@ func RegisterSwagger(r *gin.Engine, cfg *config.Config) {
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 }
 
-func RegisterRoute(r *gin.Engine)  {
+func RegisterRoute(r *gin.Engine) {
 	v1 := r.Group("/api/v1/")
 	{
 		healthGroup := v1.Group("health")
