@@ -6,7 +6,7 @@ logger:
   filePath: ../logs/
   encoding: json
   level: debug
-  logger: zerolog
+  logger: zap
 cors:
   allowOrigins: "*"
 postgres:

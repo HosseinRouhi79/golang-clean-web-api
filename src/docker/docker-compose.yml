@@ -91,6 +91,7 @@ services:
       - webapi_network
     environment:
       node.name: elasticsearch
+      xpack.security.enabled: false
       ES_JAVA_OPTS: -Xms512m -Xmx512m
       # Bootstrap password.
       # Used to initialize the keystore during the initial startup of
@@ -118,12 +119,37 @@ services:
       - elasticsearch
     restart: unless-stopped
  
+
+  filebeat:
+    build:
+      context: filebeat/
+      args:
+        ELASTIC_VERSION: ${ELASTIC_VERSION}
+    user: root
+    command:
+      - -e
+      - --strict.perms=false
+    volumes:
+      - ./filebeat/config/filebeat.yml:/usr/share/filebeat/filebeat.yml
+      - ../logs:/var/log/filebeat/service:ro
+      #- ../prod/logs:/var/log/filebeat/service:ro
+      - logs:/var/log/filebeat
+      - logs:/app:ro
+ 
+    environment:
+      FILEBEAT_INTERNAL_PASSWORD: ${FILEBEAT_INTERNAL_PASSWORD:-}
+      BEATS_SYSTEM_PASSWORD: ${FILEBEAT_INTERNAL_PASSWORD:-}
+    networks:
+      - webapi_network
+    depends_on:
+      - elasticsearch
 ####################### VOLUME AND NETWORKS #######################
 volumes:
   postgres:
   pgadmin:
   redis:
   elasticsearch:
+  logs:
   
 
 networks:
