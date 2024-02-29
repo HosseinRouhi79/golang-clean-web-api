@@ -19,7 +19,7 @@ import (
 func InitServer(cfg *config.Config) {
 	r := gin.New()
 	RegisterMainValidation()
-	r.Use(gin.Logger(), gin.Recovery(), middlewares.Limitter()) // => r1 := gin.Default()
+	r.Use(gin.Logger(), gin.Recovery(), middlewares.Limitter(), middlewares.StructuredMiddleware()) // => r1 := gin.Default()
 
 	RegisterRoute(r)
 	RegisterSwagger(r, cfg)
