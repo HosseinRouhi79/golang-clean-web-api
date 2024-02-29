@@ -15,11 +15,17 @@ func StructuredMiddleware() gin.HandlerFunc {
 		start := time.Now()
 		url := c.Request.URL
 
+		c.Next()
+		
+		param := gin.LogFormatterParams{}
+		param.TimeStamp = time.Now() // stop
+		param.Latency = param.TimeStamp.Sub(start)
+
 		keyMap := map[logging.ExtraKey]interface{}{
 			logging.Path:    url,
-			logging.Latency: start,
+			logging.Latency: param.Latency,
 		}
+
 		logger.Info(logging.RequestResponse, logging.Api, "", keyMap)
-		c.Next()
 	}
 }
