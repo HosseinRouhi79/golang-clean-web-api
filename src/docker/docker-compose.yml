@@ -140,7 +140,7 @@ services:
       FILEBEAT_INTERNAL_PASSWORD: ${FILEBEAT_INTERNAL_PASSWORD:-}
       BEATS_SYSTEM_PASSWORD: ${FILEBEAT_INTERNAL_PASSWORD:-}
     networks:
-      - net
+      - webapi_network
     depends_on:
       - elasticsearch
 ####################### VOLUME AND NETWORKS #######################
