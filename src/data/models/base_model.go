@@ -8,10 +8,10 @@ import (
 )
 
 type BaseModel struct {
-	Id         string       `gorm:"primary_key; not null"`
-	CreatedAt  time.Time    `gorm:"type: TIMESTAMP with time zone: not null"`
-	ModifiedAt sql.NullTime `gorm:"type: TIMESTAMP with time zone: null"`
-	DeletedAt  sql.NullTime `gorm:"type: TIMESTAMP with time zone: null"`
+	Id         string        `gorm:"primary_key; not null"`
+	CreatedAt  time.Time     `gorm:"type: TIMESTAMP with time zone: not null"`
+	ModifiedAt *sql.NullTime `gorm:"type: TIMESTAMP with time zone: null"`
+	DeletedAt  *sql.NullTime `gorm:"type: TIMESTAMP with time zone: null"`
 
 	CreatedBy  *sql.NullInt64 `gorm:"not null"` //it gets ID
 	ModifiedBy *sql.NullInt64 `gorm:"null"`     //...
@@ -27,5 +27,27 @@ func (b *BaseModel) BeforeCreate(tx *gorm.DB) (err error) {
 	}
 	b.CreatedBy = userID
 	b.CreatedAt = time.Now().UTC()
+	return
+}
+
+func (b *BaseModel) BeforeUpdate(tx *gorm.DB) (err error) {
+	value := tx.Statement.Context.Value("userID")
+	var userID = &sql.NullInt64{Valid: false}
+	if value != nil {
+		userID = &sql.NullInt64{Valid: true, Int64: value.(int64)}
+	}
+	b.ModifiedBy = userID
+	b.ModifiedAt = &sql.NullTime{Valid: true, Time: time.Now().UTC()}
+	return
+}
+
+func (b *BaseModel) BeforeDelete(tx *gorm.DB) (err error) {
+	value := tx.Statement.Context.Value("userID")
+	var userID = &sql.NullInt64{Valid: false}
+	if value != nil {
+		userID = &sql.NullInt64{Valid: true, Int64: value.(int64)}
+	}
+	b.DeletedBy = userID
+	b.DeletedAt = &sql.NullTime{Valid: true, Time: time.Now().UTC()}
 	return
 }
