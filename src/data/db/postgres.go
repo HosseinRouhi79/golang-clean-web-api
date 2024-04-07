@@ -40,6 +40,7 @@ func InitDB(cfg *config.Config) error {
 		sqlDB.SetMaxIdleConns(cfg.Postgres.MaxIdleConns)
 		sqlDB.SetMaxOpenConns(cfg.Postgres.MaxOpenConns)
 		sqlDB.SetConnMaxLifetime(cfg.Postgres.ConnMaxLifetime)
+
 		singleton = &single{}
 		zap.Info(logging.Postgres, logging.Migration, "Postgres connected successfully", nil)
 	} else {

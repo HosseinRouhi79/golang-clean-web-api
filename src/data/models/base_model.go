@@ -9,9 +9,9 @@ import (
 
 type BaseModel struct {
 	Id         string        `gorm:"primary_key; not null"`
-	CreatedAt  time.Time     `gorm:"type: TIMESTAMP with time zone: not null"`
-	ModifiedAt *sql.NullTime `gorm:"type: TIMESTAMP with time zone: null"`
-	DeletedAt  *sql.NullTime `gorm:"type: TIMESTAMP with time zone: null"`
+	CreatedAt  time.Time     `gorm:"type: TIMESTAMP with time zone; not null"`
+	ModifiedAt *sql.NullTime `gorm:"type: TIMESTAMP with time zone; null"`
+	DeletedAt  *sql.NullTime `gorm:"type: TIMESTAMP with time zone; null"`
 
 	CreatedBy  *sql.NullInt64 `gorm:"not null"` //it gets ID
 	ModifiedBy *sql.NullInt64 `gorm:"null"`     //...
