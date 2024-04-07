@@ -1,0 +1,6 @@
+{"level":"info","ts":"2024-04-07T13:10:39.422Z","msg":"Redis connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
+{"level":"info","ts":"2024-04-07T13:10:39.425Z","msg":"Redis is already configured","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
+{"level":"info","ts":"2024-04-07T13:10:39.453Z","msg":"Postgres connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Migration"}
+{"level":"info","ts":"2024-04-07T13:10:39.493Z","msg":"[Error creating table invalid field found for struct github.com/HosseinRouhi79/golang-clean-web-api/src/data/models.City's field Country: define a valid foreign key for relations or implement the Valuer/Scanner interface]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-04-07T13:10:39.494Z","msg":"[models.Country models.City]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-04-07T13:10:39.497Z","msg":"[postgres]","AppName":"myApp","LoggerName":"Zap"}

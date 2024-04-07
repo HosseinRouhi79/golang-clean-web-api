@@ -8,25 +8,26 @@ import (
 )
 
 type BaseModel struct {
-	Id         string        `gorm:"primary_key; not null"`
+	Id         int           `gorm:"primarykey; type:int"`
 	CreatedAt  time.Time     `gorm:"type: TIMESTAMP with time zone; not null"`
 	ModifiedAt *sql.NullTime `gorm:"type: TIMESTAMP with time zone; null"`
 	DeletedAt  *sql.NullTime `gorm:"type: TIMESTAMP with time zone; null"`
 
-	CreatedBy  *sql.NullInt64 `gorm:"not null"` //it gets ID
-	ModifiedBy *sql.NullInt64 `gorm:"null"`     //...
-	DeletedBy  *sql.NullInt64 `gorm:"null"`     //...
+	CreatedBy  int `gorm:"not null"` //it gets ID
+	ModifiedBy *sql.NullInt64 `gorm:"null"` //...
+	DeletedBy  *sql.NullInt64 `gorm:"null"` //...
 }
 
 // creating hook
 func (b *BaseModel) BeforeCreate(tx *gorm.DB) (err error) {
-	value := tx.Statement.Context.Value("userID")
-	var userID = &sql.NullInt64{Valid: false}
+	value := tx.Statement.Context.Value("UserId")
+	var userId = -1
+	// TODO: check userId type
 	if value != nil {
-		userID = &sql.NullInt64{Valid: true, Int64: value.(int64)}
+		userId = int(value.(float64))
 	}
-	b.CreatedBy = userID
 	b.CreatedAt = time.Now().UTC()
+	b.CreatedBy = userId
 	return
 }
 
