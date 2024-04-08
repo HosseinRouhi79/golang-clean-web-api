@@ -4,10 +4,10 @@ import (
 	"reflect"
 
 	"github.com/HosseinRouhi79/golang-clean-web-api/src/config"
-	"github.com/HosseinRouhi79/golang-clean-web-api/src/constants"
 	"github.com/HosseinRouhi79/golang-clean-web-api/src/data/db"
 	"github.com/HosseinRouhi79/golang-clean-web-api/src/data/models"
 	"github.com/HosseinRouhi79/golang-clean-web-api/src/pkg/logging"
+	"golang.org/x/crypto/bcrypt"
 	"gorm.io/gorm"
 )
 
@@ -22,10 +22,6 @@ func Up_1() {
 	var roles = models.Role{}
 	var userRoles = models.UserRole{}
 
-	password := "hashedPass"
-
-	role := models.Role{Name: constants.AdminRole, UserRole: &ur}
-
 	tables = addNewTable(db, countries, tables)
 	tables = addNewTable(db, cities, tables)
 	tables = addNewTable(db, users, tables)
@@ -36,17 +32,55 @@ func Up_1() {
 	if err != nil {
 		zap.Infof("%v", "Error creating table", err)
 	}
+	{
+		ci := []models.City{{Name: "Test City", CountryID: 1}}
+		c := models.Country{Name: "Test Country"}
 
-	admin := models.User{FirstName: "admin", LastName: "admin", Email: "admin@gmail.com", Password: password,
-		Enabled: true, Username: "admin"}
+		c.Id = 1
+		c.Cities = &ci
 
-	ur := []models.UserRole{{User: admin}}
-	admin.UserRoles = &ur
-
-	// db.Create(&ur[0])
-	db.Create(&admin)
-	// db.Create(role)
-
+		db.Create(&c)
+	}
+	{
+		pass := "12345678"
+		hashedPass, _ := bcrypt.GenerateFromPassword([]byte(pass), bcrypt.DefaultCost)
+		roles := []*models.Role{
+			{Name: "Admin"},
+			{Name: "User"},
+		}
+		for _, role := range roles {
+			db.Create(role)
+		}
+		// Create sample users
+		users := []*models.User{
+			{
+				Username:  "user1",
+				FirstName: "test1",
+				LastName:  "test1",
+				Email:     "test1@example.com",
+				Password:  string(hashedPass),
+				Enabled:   true,
+				UserRoles: &[]models.UserRole{
+					{RoleId: roles[0].Id}, // Assigning Admin role
+					{RoleId: roles[1].Id}, // Assigning User role
+				},
+			},
+			{
+				Username:  "user2",
+				FirstName: "test2",
+				LastName:  "test2",
+				Email:     "test2@example.com",
+				Password:  string(hashedPass),
+				Enabled:   true,
+				UserRoles: &[]models.UserRole{
+					{RoleId: roles[1].Id}, // Assigning User role
+				},
+			},
+		}
+		for _, user := range users {
+			db.Create(user)
+		}
+	}
 	zap.Infof("%v", reflect.TypeOf(tables[0]), reflect.TypeOf(tables[1]))
 	zap.Infof("%v", db.Name())
 
