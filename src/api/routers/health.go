@@ -23,3 +23,7 @@ func BodyBinder(r *gin.RouterGroup) {
 	handler := handlers.PersonData{}
 	r.POST("/", handler.BodyBind)
 }
+func SetToRedisRouter(r *gin.RouterGroup) {
+	handler := handlers.Redis{}
+	r.POST("/set", handler.SetToRedis)
+}

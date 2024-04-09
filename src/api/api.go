@@ -71,4 +71,10 @@ func RegisterRoute(r *gin.Engine) {
 		formGroup := v3.Group("form")
 		routers.BodyBinder(formGroup)
 	}
+
+	v4 := r.Group("/api/")
+	{
+		formGroup := v4.Group("redis")
+		routers.SetToRedisRouter(formGroup)
+	}
 }

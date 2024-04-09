@@ -3,9 +3,13 @@ package handlers
 import (
 	"fmt"
 	"net/http"
+	"time"
 
 	"github.com/HosseinRouhi79/golang-clean-web-api/src/api/helper"
 	"github.com/HosseinRouhi79/golang-clean-web-api/src/api/validation"
+	"github.com/HosseinRouhi79/golang-clean-web-api/src/config"
+	"github.com/HosseinRouhi79/golang-clean-web-api/src/data/cache"
+	"github.com/HosseinRouhi79/golang-clean-web-api/src/pkg/logging"
 	"github.com/gin-gonic/gin"
 )
 
@@ -19,6 +23,11 @@ type PersonData struct {
 	LastName  string `json:"last_name" binding:"required"`
 	Mobile    string `json:"mobile" binding:"mobile"`
 	Password  string `json:"password" binding:"password"`
+}
+
+type Redis struct {
+	Key   string
+	Value string
 }
 
 func NewHealth() *Health {
@@ -85,9 +94,23 @@ func (p PersonData) BodyBind(c *gin.Context) {
 	var veArr []validation.ValidationError
 	err := c.ShouldBind(&p)
 	if err != nil {
-		c.AbortWithStatusJSON(http.StatusInternalServerError,helper.ResponseWithValidationError("", "400", err, veArr))
+		c.AbortWithStatusJSON(http.StatusInternalServerError, helper.ResponseWithValidationError("", "400", err, veArr))
 		return
 	}
-	c.JSON(200,helper.Response(p, "200"))
-	
+	c.JSON(200, helper.Response(p, "200"))
+
+}
+
+func (inputs Redis) SetToRedis(c *gin.Context) {
+	logger := logging.NewLogger(config.GetConfig())
+	redisClient := cache.GetRedis()
+	err := c.ShouldBind(&inputs)
+	if err != nil {
+		logger.Infof("failed to marshal:%v", err)
+	}
+	key := inputs.Key
+	value := inputs.Value
+
+	cache.Set[string](redisClient, key, value, 3600*time.Second)
+
 }

@@ -1,6 +1,7 @@
 package cache
 
 import (
+	"encoding/json"
 	"fmt"
 	"time"
 
@@ -49,4 +50,34 @@ func GetRedis() *redis.Client {
 
 func CloseRedis() {
 	redisClient.Close()
+}
+
+func Set[T any](redisClient *redis.Client, key string, value T, durationTime time.Duration) error {
+	logger := logging.NewLogger(config.GetConfig())
+	v, err := json.Marshal(value)
+	if err != nil {
+		logger.Infof("failed to marshal:%v", err)
+		return err
+	}
+	if err := redisClient.Set(key, v, durationTime).Err(); err != nil {
+		logger.Infof("failed to set data in Redis: %v", err)
+		return err
+	}
+	logger.Info(logging.Internal, logging.Insert, "data set successfully", nil)
+	return nil
+}
+
+func Get[T any](redisClient *redis.Client, key string) (dest T, err error) {
+	val, err := redisClient.Get(key).Result()
+	if err != nil {
+		logger.Infof("failed to get from redis:%v", err)
+		return dest, err
+	}
+	err = json.Unmarshal([]byte(val), dest)
+	if err != nil {
+		logger.Infof("failed to unmarshal:%v", err)
+		return dest, err
+	}
+	logger.Infof("result is:%v", dest)
+	return dest, nil
 }
