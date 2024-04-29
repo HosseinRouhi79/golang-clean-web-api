@@ -1,6 +1,9 @@
 package services
 
 import (
+	"fmt"
+	"time"
+
 	"github.com/HosseinRouhi79/golang-clean-web-api/src/config"
 	"github.com/HosseinRouhi79/golang-clean-web-api/src/data/cache"
 	"github.com/HosseinRouhi79/golang-clean-web-api/src/pkg/logging"
@@ -13,6 +16,11 @@ type OtpService struct {
 	redisClient *redis.Client
 }
 
+type OtpCred struct {
+	Value string
+	Used  bool
+}
+
 func NewOtpService(cfg *config.Config) *OtpService {
 
 	logger := logging.NewLogger(cfg)
@@ -20,12 +28,19 @@ func NewOtpService(cfg *config.Config) *OtpService {
 	return &OtpService{cfg: cfg, logger: logger, redisClient: redis}
 }
 
-func (optService *OtpService) SetOtp(mobile string, otp string) error {
-	//TODO: implement setOtp
+func (otpService *OtpService) SetOtp(mobile string, otp string) error {
+	
+	var prefix string = "redis"
+	key := fmt.Sprintf("%s:%s", prefix, mobile)
+	val := OtpCred{Value: otp, Used: false}
+	err := cache.Set[OtpCred](otpService.redisClient, key, val, time.Second*3600)
+	if err != nil {
+		return err
+	}
 	return nil
 }
 
-func (optService *OtpService) ValidateOtp(mobile string, otp string) error {
+func (otpService *OtpService) ValidateOtp(mobile string, otp string) error {
 	//TODO: implement validateOtp
 	return nil
 }
