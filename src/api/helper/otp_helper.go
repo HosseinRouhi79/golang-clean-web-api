@@ -25,7 +25,7 @@ func GenerateOtp() int {
 	min := int(math.Pow(10, float64(digits-1)))
 	max := int(math.Pow(10, float64(digits)) - 1)
 
-	randomNumber := rng.Intn(max-min) + min
+	randomNumber := rng.Intn(max-min) + min //999999-100000 = 899999 ====> + min(100000) // Intn(n) give random num from zero to n
 
 	return randomNumber
 

@@ -30,6 +30,10 @@ type Redis struct {
 	Value string
 }
 
+type RedisKey struct {
+	Key string
+}
+
 func NewHealth() *Health {
 	return &Health{}
 }
@@ -112,5 +116,24 @@ func (inputs Redis) SetToRedis(c *gin.Context) {
 	value := inputs.Value
 
 	cache.Set[string](redisClient, key, value, 3600*time.Second)
+
+}
+
+func (inputs RedisKey) GetFromRedis(c *gin.Context) {
+	logger := logging.NewLogger(config.GetConfig())
+	redisClient := cache.GetRedis()
+	keyString := c.Param("key")
+	inputs.Key = keyString
+	
+	
+	dest, err := cache.Get[string](redisClient, inputs.Key)
+	fmt.Println(dest)
+	if err != nil {
+		logger.Infof("failed to get data from redis:%v", err)
+		return
+	}
+	c.JSON(200, gin.H{
+		"dest":dest,
+	})
 
 }

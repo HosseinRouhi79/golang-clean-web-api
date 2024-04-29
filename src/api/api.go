@@ -77,4 +77,10 @@ func RegisterRoute(r *gin.Engine) {
 		formGroup := v4.Group("redis")
 		routers.SetToRedisRouter(formGroup)
 	}
+
+	v5 := r.Group("/api/")
+	{
+		formGroup := v5.Group("redis")
+		routers.GetFromRedisRouter(formGroup)
+	}
 }

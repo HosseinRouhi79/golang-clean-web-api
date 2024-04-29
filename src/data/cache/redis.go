@@ -73,7 +73,7 @@ func Get[T any](redisClient *redis.Client, key string) (dest T, err error) {
 		logger.Infof("failed to get from redis:%v", err)
 		return dest, err
 	}
-	err = json.Unmarshal([]byte(val), dest)
+	err = json.Unmarshal([]byte(val), &dest)
 	if err != nil {
 		logger.Infof("failed to unmarshal:%v", err)
 		return dest, err

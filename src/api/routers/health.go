@@ -27,3 +27,9 @@ func SetToRedisRouter(r *gin.RouterGroup) {
 	handler := handlers.Redis{}
 	r.POST("/set", handler.SetToRedis)
 }
+
+func GetFromRedisRouter(r *gin.RouterGroup) {
+	//http://192.168.59.133:5005/api/redis/get/testKey
+	handler := handlers.RedisKey{}
+	r.GET("/get/:key", handler.GetFromRedis)
+}
