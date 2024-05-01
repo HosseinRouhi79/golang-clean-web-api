@@ -27,8 +27,15 @@ func (h UserHandler) SendOtp(c *gin.Context) {
 	}
 	req := OtpRequest{}
 	err := c.ShouldBindJSON(&req)
+	var status bool = true
+	var code int = 200
 	if err != nil {
 		h.UserService.Logger.Infof("error has occured: %s", err.Error())
+		status = false
+		code = 500
+		c.JSON(code, gin.H{
+			"status": status,
+		})
 		return
 	}
 	otpCode := helper.GenerateOtp()
@@ -36,11 +43,16 @@ func (h UserHandler) SendOtp(c *gin.Context) {
 
 	if err != nil {
 		h.UserService.Logger.Infof("can not set otp code: %s", err.Error())
+		status = false
+		code = 400
+		c.JSON(code, gin.H{
+			"status": status,
+		})
 		return
 	}
 
 	// send OTP SMS
-	c.JSON(200, gin.H{
-		"status": true,
+	c.JSON(code, gin.H{
+		"status": status,
 	})
 }

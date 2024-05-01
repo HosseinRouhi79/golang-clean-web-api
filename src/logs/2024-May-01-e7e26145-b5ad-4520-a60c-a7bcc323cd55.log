@@ -1,0 +1,15 @@
+{"level":"info","ts":"2024-05-01T07:11:38.322Z","msg":"Redis connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
+{"level":"info","ts":"2024-05-01T07:11:38.322Z","msg":"Redis is already configured","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
+{"level":"info","ts":"2024-05-01T07:11:38.338Z","msg":"Postgres connected successfully","AppName":"myApp","LoggerName":"Zap","SubCategory":"Migration","Category":"Postgres"}
+{"level":"info","ts":"2024-05-01T07:11:43.255Z","msg":"error has occured: [Key: 'OtpRequest.Mobile' Error:Field validation for 'Mobile' failed on the 'mobile' tag]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-05-01T07:11:43.255Z","msg":"","AppName":"myApp","LoggerName":"Zap","Category":"RequestResponse","SubCategory":"Api","Path":"/api/redis/send-otp","Latency":0.000775}
+{"level":"info","ts":"2024-05-01T07:12:00.611Z","msg":"error has occured: [Key: 'OtpRequest.Mobile' Error:Field validation for 'Mobile' failed on the 'mobile' tag]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-05-01T07:12:00.611Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/redis/send-otp","Latency":0.000697859,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-05-01T07:12:21.703Z","msg":"error has occured: [Key: 'OtpRequest.Mobile' Error:Field validation for 'Mobile' failed on the 'mobile' tag]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-05-01T07:12:21.704Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/redis/send-otp","Latency":0.002108748,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-05-01T07:12:35.390Z","msg":"failed to get from redis:[redis: nil]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-05-01T07:12:35.391Z","msg":"data set successfully","AppName":"myApp","LoggerName":"Zap","Category":"Internal","SubCategory":"Insert"}
+{"level":"info","ts":"2024-05-01T07:12:35.391Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/redis/send-otp","Latency":0.003339961,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-05-01T07:12:52.708Z","msg":"result is:[{546692 false}]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-05-01T07:12:52.708Z","msg":"can not set otp code: [the otp exists]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-05-01T07:12:52.708Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/redis/send-otp","Latency":0.003933633,"Category":"RequestResponse","SubCategory":"Api"}
