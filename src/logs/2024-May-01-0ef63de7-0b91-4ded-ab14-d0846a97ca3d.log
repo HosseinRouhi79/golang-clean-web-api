@@ -1,0 +1,48 @@
+{"level":"info","ts":"2024-05-01T06:38:37.639Z","msg":"Redis connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
+{"level":"info","ts":"2024-05-01T06:38:37.640Z","msg":"Redis is already configured","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
+{"level":"info","ts":"2024-05-01T06:38:37.662Z","msg":"Postgres connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Migration"}
+{"level":"info","ts":"2024-05-01T06:38:52.075Z","msg":"failed to get from redis:[redis: nil]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-05-01T06:38:52.077Z","msg":"data set successfully","AppName":"myApp","LoggerName":"Zap","Category":"Internal","SubCategory":"Insert"}
+{"level":"info","ts":"2024-05-01T06:38:52.077Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/redis/send-otp","Latency":0.013902027,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-05-01T06:40:39.795Z","msg":"result is:[{153364 false}]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-05-01T06:40:39.796Z","msg":"can not set otp code: [the otp exists]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-05-01T06:40:39.796Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/redis/send-otp","Latency":0.005818295,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-05-01T06:40:42.841Z","msg":"result is:[{153364 false}]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-05-01T06:40:42.841Z","msg":"can not set otp code: [the otp exists]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-05-01T06:40:42.842Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/redis/send-otp","Latency":0.002138278,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-05-01T06:40:43.902Z","msg":"result is:[{153364 false}]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-05-01T06:40:43.902Z","msg":"can not set otp code: [the otp exists]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-05-01T06:40:43.902Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/redis/send-otp","Latency":0.002185828,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-05-01T06:40:53.859Z","msg":"result is:[{153364 false}]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-05-01T06:40:53.859Z","msg":"can not set otp code: [the otp exists]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-05-01T06:40:53.859Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/redis/send-otp","Latency":0.004176363,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-05-01T06:41:02.024Z","msg":"failed to get from redis:[redis: nil]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-05-01T06:41:02.025Z","msg":"data set successfully","AppName":"myApp","LoggerName":"Zap","Category":"Internal","SubCategory":"Insert"}
+{"level":"info","ts":"2024-05-01T06:41:02.025Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/redis/send-otp","Latency":0.003106832,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-05-01T06:41:04.641Z","msg":"result is:[{361086 false}]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-05-01T06:41:04.641Z","msg":"can not set otp code: [the otp exists]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-05-01T06:41:04.641Z","msg":"","AppName":"myApp","LoggerName":"Zap","Category":"RequestResponse","SubCategory":"Api","Path":"/api/redis/send-otp","Latency":0.003109635}
+{"level":"info","ts":"2024-05-01T06:41:06.013Z","msg":"result is:[{361086 false}]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-05-01T06:41:06.013Z","msg":"can not set otp code: [the otp exists]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-05-01T06:41:06.013Z","msg":"","AppName":"myApp","LoggerName":"Zap","SubCategory":"Api","Path":"/api/redis/send-otp","Latency":0.003411944,"Category":"RequestResponse"}
+{"level":"info","ts":"2024-05-01T06:41:07.246Z","msg":"result is:[{361086 false}]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-05-01T06:41:07.246Z","msg":"can not set otp code: [the otp exists]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-05-01T06:41:07.246Z","msg":"","AppName":"myApp","LoggerName":"Zap","Category":"RequestResponse","SubCategory":"Api","Path":"/api/redis/send-otp","Latency":0.002583517}
+{"level":"info","ts":"2024-05-01T06:41:08.747Z","msg":"result is:[{361086 false}]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-05-01T06:41:08.747Z","msg":"can not set otp code: [the otp exists]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-05-01T06:41:08.747Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/redis/send-otp","Latency":0.002464613,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-05-01T06:41:09.846Z","msg":"result is:[{361086 false}]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-05-01T06:41:09.846Z","msg":"can not set otp code: [the otp exists]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-05-01T06:41:09.846Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/redis/send-otp","Latency":0.002858015,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-05-01T06:41:10.979Z","msg":"result is:[{361086 false}]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-05-01T06:41:10.979Z","msg":"can not set otp code: [the otp exists]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-05-01T06:41:10.979Z","msg":"","AppName":"myApp","LoggerName":"Zap","Latency":0.002338966,"Category":"RequestResponse","SubCategory":"Api","Path":"/api/redis/send-otp"}
+{"level":"info","ts":"2024-05-01T06:41:12.164Z","msg":"result is:[{361086 false}]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-05-01T06:41:12.165Z","msg":"can not set otp code: [the otp exists]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-05-01T06:41:12.165Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/redis/send-otp","Latency":0.002476811,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-05-01T06:41:19.009Z","msg":"result is:[{361086 false}]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-05-01T06:41:19.010Z","msg":"can not set otp code: [the otp exists]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-05-01T06:41:19.010Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/redis/send-otp","Latency":0.003782039,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-05-01T06:43:03.741Z","msg":"result is:[{361086 false}]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-05-01T06:43:03.741Z","msg":"can not set otp code: [the otp exists]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-05-01T06:43:03.741Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/redis/send-otp","Latency":0.002575092,"Category":"RequestResponse","SubCategory":"Api"}

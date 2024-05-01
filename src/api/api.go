@@ -82,5 +82,6 @@ func RegisterRoute(r *gin.Engine) {
 	{
 		formGroup := v5.Group("redis")
 		routers.GetFromRedisRouter(formGroup)
+		routers.SetOtp(formGroup)
 	}
 }
