@@ -91,3 +91,22 @@ func (tokenService *TokenService) ValidateToken(token string) (*jwt.Token, error
 	}
 	return tokenObj, nil
 }
+
+func (tokenService *TokenService) GetClaims(token string) (mapClaims map[string]interface{}, err error) {
+	mapClaims = map[string]interface{}{}
+	str := "claims"
+	jwtToken, err := tokenService.ValidateToken(token)
+
+	if err != nil {
+		return nil, err
+	}
+
+	claims, ok := jwtToken.Claims.(jwt.MapClaims)
+	if !ok {
+		return nil, fmt.Errorf("cant get %v", str)
+	}
+	for i, v := range claims {
+		mapClaims[i] = v
+	}
+	return mapClaims, nil
+}

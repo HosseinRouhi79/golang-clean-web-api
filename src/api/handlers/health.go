@@ -158,3 +158,15 @@ func (j JWT) Generate(c *gin.Context) {
 	tk, _ := j.service.GenerateToken(dto)
 	fmt.Println(tk.AccessToken)
 }
+
+func (j JWT) Validate(c *gin.Context) {
+	cfg := config.GetConfig()
+	tk := "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RfZW1haWwiLCJleHAiOjE3MTc5MjU2NTAsImZpcnN0TmFtZSI6InRlc3QiLCJpZCI6MSwibGFzdE5hbWUiOiJ0ZXN0IiwibW9iaWxlTnVtYmVyIjoidGVzdF9tb2JpbGUiLCJyb2xlcyI6WyJ0ZXN0X3JvbGUiXSwidXNlck5hbWUiOiJ0ZXN0In0.8fUlh5Brv_90R_enmfVFzUF7rX_s07on5RD_FFBhv7o"
+	j.service = *services.NewTokenService(cfg)
+	tk2, err := j.service.ValidateToken(tk)
+	if err != nil {
+		fmt.Println(err)
+        return
+	}
+	fmt.Println(tk2)
+}
