@@ -1,6 +1,7 @@
 package services
 
 import (
+	"fmt"
 	"time"
 
 	"github.com/HosseinRouhi79/golang-clean-web-api/src/config"
@@ -75,4 +76,18 @@ func (tokenService *TokenService) GenerateToken(tokenDto *TokenDto) (*TokenDetai
 		return nil, err
 	}
 	return token, nil
+}
+
+func (tokenService *TokenService) ValidateToken(token string) (*jwt.Token, error) {
+	tokenObj, err := jwt.Parse(token, func(token *jwt.Token) (interface{}, error) {
+		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
+			return nil, fmt.Errorf("unexpected signing method: %v", token.Header["alg"])
+		}
+		return []byte(tokenService.Cfg.JWT.Secret), nil
+	})
+
+	if err != nil {
+		return nil, err
+	}
+	return tokenObj, nil
 }
