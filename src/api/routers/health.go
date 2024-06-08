@@ -33,3 +33,8 @@ func GetFromRedisRouter(r *gin.RouterGroup) {
 	handler := handlers.RedisKey{}
 	r.GET("/get/:key", handler.GetFromRedis)
 }
+
+func GetJWT(r *gin.RouterGroup){
+	handler := handlers.JWT{}
+	r.GET("/get/jwt", handler.Generate)
+}

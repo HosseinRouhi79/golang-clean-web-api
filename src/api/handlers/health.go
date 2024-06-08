@@ -10,6 +10,7 @@ import (
 	"github.com/HosseinRouhi79/golang-clean-web-api/src/config"
 	"github.com/HosseinRouhi79/golang-clean-web-api/src/data/cache"
 	"github.com/HosseinRouhi79/golang-clean-web-api/src/pkg/logging"
+	"github.com/HosseinRouhi79/golang-clean-web-api/src/services"
 	"github.com/gin-gonic/gin"
 )
 
@@ -32,6 +33,10 @@ type Redis struct {
 
 type RedisKey struct {
 	Key string
+}
+
+type JWT struct {
+	service services.TokenService
 }
 
 func NewHealth() *Health {
@@ -124,8 +129,7 @@ func (inputs RedisKey) GetFromRedis(c *gin.Context) {
 	redisClient := cache.GetRedis()
 	keyString := c.Param("key")
 	inputs.Key = keyString
-	
-	
+
 	dest, err := cache.Get[string](redisClient, inputs.Key)
 	fmt.Println(dest)
 	if err != nil {
@@ -133,7 +137,24 @@ func (inputs RedisKey) GetFromRedis(c *gin.Context) {
 		return
 	}
 	c.JSON(200, gin.H{
-		"dest":dest,
+		"dest": dest,
 	})
 
+}
+
+
+func (j JWT) Generate(c *gin.Context) {
+	cfg := config.GetConfig()
+	dto := &services.TokenDto{
+		UserID: 1,
+		FirstName: "test",
+		LastName: "test",
+		UserName: "test",
+		Email: "test_email",
+        MobileNumber: "test_mobile",
+        Roles: []string{"test_role"},
+	}
+	j.service = *services.NewTokenService(cfg)
+	tk, _ := j.service.GenerateToken(dto)
+	fmt.Println(tk.AccessToken)
 }

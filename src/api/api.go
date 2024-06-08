@@ -84,4 +84,10 @@ func RegisterRoute(r *gin.Engine) {
 		routers.GetFromRedisRouter(formGroup)
 		routers.SetOtp(formGroup)
 	}
+
+	v6 := r.Group("/api/")
+	{
+		formGroup := v6.Group("")
+		routers.GetJWT(formGroup)
+	}
 }
