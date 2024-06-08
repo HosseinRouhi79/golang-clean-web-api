@@ -1,8 +1,11 @@
 package services
 
 import (
+	"time"
+
 	"github.com/HosseinRouhi79/golang-clean-web-api/src/config"
 	"github.com/HosseinRouhi79/golang-clean-web-api/src/pkg/logging"
+	"github.com/golang-jwt/jwt/v5"
 )
 
 type TokenService struct {
@@ -20,11 +23,29 @@ type TokenDto struct {
 	Roles        []string
 }
 
-func NewTokenService(cfg *config.Config) (*TokenService) {
+type TokenDetail struct {
+	AccessToken                string `json:"accessToken"`
+	RefreshToken               string `json:"refreshToken"`
+	AccessTokenExpirationTime  int64  `json:"accessTokenExpirationTime"`
+	RefreshTokenExpirationTime int64  `json:"refreshTokenExpirationTime"`
+}
+
+func NewTokenService(cfg *config.Config) *TokenService {
 	logger := logging.NewLogger(cfg)
 	u := &TokenService{
 		Logger: logger,
-		Cfg: cfg,
+		Cfg:    cfg,
 	}
 	return u
+}
+
+func (tokenService *TokenService) GenerateToken(tokenDto *TokenDto) (*TokenDetail, error) {
+	token := TokenDetail{}
+	token.AccessTokenExpirationTime = time.Now().Add(tokenService.Cfg.JWT.AccessTokenExpireDuration * time.Minute).Unix()
+	token.RefreshTokenExpirationTime = time.Now().Add(tokenService.Cfg.JWT.RefreshTokenExpireDuration * time.Minute).Unix()
+
+	atc := jwt.MapClaims{} //access token claims
+
+
+	return nil, nil
 }

@@ -20,7 +20,7 @@ func GenerateOtp() int {
 	digits := cfg.Otp.Digits
 	// expireTime := cfg.Otp.ExpireTime
 	source := rand.NewSource(time.Now().UnixNano())
-	rng := rand.New(source)
+	rng := rand.New(source) //create independent random generator
 
 	min := int(math.Pow(10, float64(digits-1)))
 	max := int(math.Pow(10, float64(digits)) - 1)
