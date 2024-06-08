@@ -44,8 +44,35 @@ func (tokenService *TokenService) GenerateToken(tokenDto *TokenDto) (*TokenDetai
 	token.AccessTokenExpirationTime = time.Now().Add(tokenService.Cfg.JWT.AccessTokenExpireDuration * time.Minute).Unix()
 	token.RefreshTokenExpirationTime = time.Now().Add(tokenService.Cfg.JWT.RefreshTokenExpireDuration * time.Minute).Unix()
 
-	atc := jwt.MapClaims{} //access token claims
+	dto := jwt.MapClaims{} //access token claims
 
+	dto["id"] = tokenDto.UserID
+	dto["firstName"] = tokenDto.FirstName
+	dto["lastName"] = tokenDto.LastName
+	dto["userName"] = tokenDto.UserName
+	dto["email"] = tokenDto.Email
+	dto["mobileNumber"] = tokenDto.MobileNumber
+	dto["roles"] = tokenDto.Roles
+	dto["exp"] = token.AccessTokenExpirationTime
 
-	return nil, nil
+	atc := jwt.NewWithClaims(jwt.SigningMethodHS256, dto)
+	var err error
+	token.AccessToken, err = atc.SignedString([]byte(tokenService.Cfg.JWT.Secret))
+
+	if err != nil {
+		return nil, err
+	}
+
+	dtor := jwt.MapClaims{} //refresh token claims
+	dtor["id"] = tokenDto.UserID
+	dtor["exp"] = token.RefreshTokenExpirationTime
+
+	rtc := jwt.NewWithClaims(jwt.SigningMethodHS256, dtor)
+
+	token.RefreshToken, err = rtc.SignedString([]byte(tokenService.Cfg.JWT.Secret))
+
+	if err != nil {
+		return nil, err
+	}
+	return &token, nil
 }
