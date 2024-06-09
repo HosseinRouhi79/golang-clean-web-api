@@ -36,6 +36,8 @@ func GetFromRedisRouter(r *gin.RouterGroup) {
 
 func GetJWT(r *gin.RouterGroup){
 	handler := handlers.JWT{}
+	handler2 := handlers.User{}
 	r.GET("/get/jwt", handler.Generate)
 	r.GET("/get/jwt/validate", handler.Validate)
+	r.GET("/get/repo", handler2.TestRepo)
 }

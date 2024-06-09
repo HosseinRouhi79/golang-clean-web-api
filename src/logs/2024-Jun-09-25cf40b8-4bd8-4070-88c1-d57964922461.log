@@ -1,0 +1,5 @@
+{"level":"info","ts":"2024-06-09T12:51:11.930Z","msg":"Redis connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
+{"level":"info","ts":"2024-06-09T12:51:11.930Z","msg":"Redis is already configured","AppName":"myApp","LoggerName":"Zap","SubCategory":"Migration","Category":"Redis"}
+{"level":"info","ts":"2024-06-09T12:51:12.086Z","msg":"Postgres connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Migration"}
+{"level":"info","ts":"2024-06-09T12:51:16.750Z","msg":"ERROR: column \"mobile\" does not exist (SQLSTATE 42703)","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Api"}
+{"level":"info","ts":"2024-06-09T12:51:16.750Z","msg":"","AppName":"myApp","LoggerName":"Zap","SubCategory":"Api","Path":"/api/get/repo","Latency":0.084053893,"Category":"RequestResponse"}

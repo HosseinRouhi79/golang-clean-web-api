@@ -7,8 +7,8 @@ type User struct {
 	LastName     string `gorm:"type:string;size:25;null"`
 	MobileNumber string `gorm:"type:string;size:11;null;unique;default:null"`
 	Email        string `gorm:"type:string;size:64;null;unique;default:null"`
+	Mobile       string `gorm:"type:string;size:64;null;unique;default:null"`
 	Password     string `gorm:"type:string;size:64;not null"`
 	Enabled      bool   `gorm:"default:true"`
 	UserRoles    *[]UserRole
 }
-

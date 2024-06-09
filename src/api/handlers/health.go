@@ -39,6 +39,10 @@ type JWT struct {
 	service services.TokenService
 }
 
+type User struct {
+	service services.UserService
+}
+
 func NewHealth() *Health {
 	return &Health{}
 }
@@ -169,4 +173,15 @@ func (j JWT) Validate(c *gin.Context) {
         return
 	}
 	fmt.Println(tk2)
+}
+
+func (user User) TestRepo(c *gin.Context){
+	cfg := config.GetConfig()
+    user.service = *services.NewUserService(cfg)
+    _ , v := user.service.ExistMobile("09199810079")
+	if v {
+		fmt.Println("exist")
+	}else {
+		fmt.Println("not exist")
+	}
 }
