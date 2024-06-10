@@ -178,7 +178,7 @@ func (j JWT) Validate(c *gin.Context) {
 func (user User) TestRepo(c *gin.Context){
 	cfg := config.GetConfig()
     user.service = *services.NewUserService(cfg)
-    _ , v := user.service.ExistMobile("09199810079")
+    _ , v := user.service.ExistBytMobile("09199810079")
 	if v {
 		fmt.Println("exist")
 	}else {
