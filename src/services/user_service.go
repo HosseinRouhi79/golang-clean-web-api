@@ -60,7 +60,7 @@ func (userService *UserService) Register(dto dto.RegisterationDto) error {
         return errors.New("username already exist")
     }
 
-	err, roleID := userService.GetDefaultRole(model.Username)
+	roleID, err := userService.GetDefaultRole(model.Username)
 	if err!= nil {
 		userService.Logger.Info(logging.Postgres, logging.DefaultRoleNotFound, "Role not found",nil)
         return err

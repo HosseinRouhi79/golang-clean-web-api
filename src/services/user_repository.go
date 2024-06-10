@@ -57,15 +57,15 @@ func (userService *UserService) ExistByUsername(username string) (error, bool) {
 	return nil, true
 } 
 
-func (userService *UserService) GetDefaultRole(username string) (err error, roleID int) {
+func (userService *UserService) GetDefaultRole(username string) (roleID int, err error) {
 
 	role := models.Role{}
 	err = userService.Db.Table("roles").Where("name =?", constants.DefaultRole).First(&role).Error
 	if err!= nil{
 		userService.Logger.Info(logging.Postgres, logging.DefaultRoleNotFound, "Role not found", nil)
-		return err, 0
+		return 0, err
 	}
-	return nil, role.Id
+	return role.Id, nil
 
 }
 
