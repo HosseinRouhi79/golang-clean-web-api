@@ -11,6 +11,9 @@ import (
 
 var cfg = config.GetConfig()
 
+type TokenHandler struct {
+	Token string
+}
 type AuthMobile struct {
 	Mobile string
 	Otp string
@@ -42,5 +45,24 @@ func (auth AuthMobile) RLMobile(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
 		"status": true,
 		"token":  tokenDetail,
+	})
+}
+
+func (t TokenHandler) GetClaims(c *gin.Context){
+	err := c.ShouldBind(&t)
+
+	if err != nil {
+		c.AbortWithStatusJSON(400, gin.H{
+			"error": err.Error(),
+		})
+		return
+	}
+
+	tokenService := services.NewTokenService(cfg)
+	mpClaims, _ := tokenService.GetClaims(t.Token)
+
+	c.JSON(http.StatusOK, gin.H{
+		"status": true,
+		"claims":mpClaims,
 	})
 }
