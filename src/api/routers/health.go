@@ -41,3 +41,12 @@ func GetJWT(r *gin.RouterGroup){
 	r.GET("/get/jwt/validate", handler.Validate)
 	r.GET("/get/repo", handler2.TestRepo)
 }
+
+
+func Auth(r *gin.RouterGroup){
+	handler := handlers.AuthMobile{}
+    r.POST("/register-login-mobile", handler.RLMobile)
+    // r.POST("/register", handler.Register)
+    // r.POST("/logout", handler.Logout)
+    // r.POST("/refresh", handler.Refresh)
+}

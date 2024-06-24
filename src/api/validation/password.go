@@ -56,7 +56,7 @@ func (n Number) IsSatisfied(pass string) bool {
 	numberSlice := strings.Split(NUMBERS, "")
 	for _, e := range elements {
 		if  slices.Contains(numberSlice, e){
-			n.Satisfy = true
+			n.Satisfy = true 
 			break
 		} else {
 			n.Satisfy = false

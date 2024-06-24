@@ -13,7 +13,7 @@ type LoginByUsernameDto struct {
 	Password string `json:"password" binding:"required, password"`
 }
 
-type LoginByMobileDto struct {
+type RegisterLoginByMobileDto struct {
 	Mobile string `json:"mobile" binding:"required, mobile, min=11, max=11"`
 	Otp    string `json:"otp" binding:"required, min=6, max=6"`
 }

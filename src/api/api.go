@@ -89,5 +89,6 @@ func RegisterRoute(r *gin.Engine) {
 	{
 		formGroup := v6.Group("")
 		routers.GetJWT(formGroup)
+		routers.Auth(formGroup)
 	}
 }

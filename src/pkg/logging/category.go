@@ -13,6 +13,7 @@ const (
 	Validation      Category = "Validation"
 	RequestResponse Category = "RequestResponse"
 	Prometheus      Category = "Prometheus"
+	OTP             Category = "OTP"
 )
 
 const (
