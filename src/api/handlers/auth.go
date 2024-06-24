@@ -12,11 +12,11 @@ import (
 var cfg = config.GetConfig()
 
 type TokenHandler struct {
-	Token string
+	Token string `form:"token"`
 }
 type AuthMobile struct {
-	Mobile string
-	Otp string
+	Mobile string `form:"mobile"`
+	Otp    string `form:"otp"`
 }
 
 func (auth AuthMobile) RLMobile(c *gin.Context) {
@@ -31,9 +31,9 @@ func (auth AuthMobile) RLMobile(c *gin.Context) {
 	}
 	dto := dto.RegisterLoginByMobileDto{
 		Mobile: am.Mobile,
-		Otp: am.Otp,
+		Otp:    am.Otp,
 	}
-	
+
 	userService := services.NewUserService(cfg)
 	tokenDetail, err := userService.RegisterLoginByMobile(dto)
 	if err != nil {
@@ -48,7 +48,7 @@ func (auth AuthMobile) RLMobile(c *gin.Context) {
 	})
 }
 
-func (t TokenHandler) GetClaims(c *gin.Context){
+func (t TokenHandler) GetClaims(c *gin.Context) {
 	err := c.ShouldBind(&t)
 
 	if err != nil {
@@ -63,6 +63,6 @@ func (t TokenHandler) GetClaims(c *gin.Context){
 
 	c.JSON(http.StatusOK, gin.H{
 		"status": true,
-		"claims":mpClaims,
+		"claims": mpClaims,
 	})
 }
