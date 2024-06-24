@@ -1,0 +1,6 @@
+{"level":"info","ts":"2024-06-24T10:46:58.528Z","msg":"Redis connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
+{"level":"info","ts":"2024-06-24T10:46:58.528Z","msg":"Redis is already configured","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
+{"level":"info","ts":"2024-06-24T10:46:58.561Z","msg":"Postgres connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Migration"}
+{"level":"info","ts":"2024-06-24T10:49:18.621Z","msg":"Record(mobile) not found","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Api"}
+{"level":"info","ts":"2024-06-24T10:49:18.792Z","msg":"role: unsupported relations for schema UserRole","AppName":"myApp","LoggerName":"Zap","Category":"Internal","SubCategory":"Select"}
+{"level":"info","ts":"2024-06-24T10:49:18.792Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/register-login-mobile","Latency":0.195546184,"Category":"RequestResponse","SubCategory":"Api"}

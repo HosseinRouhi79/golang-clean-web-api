@@ -3,6 +3,7 @@ package services
 import (
 	"errors"
 
+	"github.com/HosseinRouhi79/golang-clean-web-api/src/api/helper"
 	"github.com/HosseinRouhi79/golang-clean-web-api/src/config"
 	"github.com/HosseinRouhi79/golang-clean-web-api/src/data/db"
 	"github.com/HosseinRouhi79/golang-clean-web-api/src/data/models"
@@ -97,20 +98,65 @@ func (userService *UserService) Register(dto dto.RegisterationDto) error {
 }
 
 func (userService *UserService) RegisterLoginByMobile(dto dto.RegisterLoginByMobileDto) (tokenDetail *TokenDetail, err error) {
-	err = userService.Otp.ValidateOtp(dto.Mobile, dto.Otp)
-	if err != nil {
-		userService.Logger.Info(logging.OTP, logging.Select, err.Error(), nil)
-		return nil, err
-	}
-	err, exists := userService.ExistBytMobile(dto.Mobile)
+
+	_, exists := userService.ExistBytMobile(dto.Mobile)
 
 	user := models.User{Mobile: dto.Mobile, Username: dto.Mobile}
 
 	if !exists {
+		password := helper.GeneratePassword()
+		bp := []byte(password)
+		hp, err := bcrypt.GenerateFromPassword(bp, bcrypt.DefaultCost)
+		if err != nil {
+			return nil, err
+		}
+		user.Password = string(hp)
+		tx := userService.Db.Begin()
+		err = tx.Create(&user).Error
+		if err != nil {
+			tx.Rollback()
+			userService.Logger.Info(logging.Postgres, logging.Select, "error in creating model", nil)
+			return nil, err
+		}
+		roleID, _ := userService.GetDefaultRole(user.Username)
+		err = tx.Create(&models.UserRole{RoleId: roleID, UserId: user.Id}).Error
+		if err != nil {
+			tx.Rollback()
+			userService.Logger.Info(logging.Postgres, logging.Select, "error in creating user-role", nil)
+			return nil, err
+		}
+		tx.Commit()
+
+		tdto := TokenDto{UserName: user.Username, UserID: user.Id}
+		roles := []string{}
+		var userRoles []models.UserRole
+
+		if err := userService.Db.Table("user_roles").Where("user_id = ?", user.Id).Preload("Role").Find(&userRoles).Error; err != nil {
+			userService.Logger.Info(logging.Internal, logging.Select, err.Error(), nil)
+			return nil, err
+		}
+
+		for _, r := range userRoles{
+			roles = append(roles, r.Role.Name)
+		}
+
+		tdto.Roles = roles
+		tokenDetail, err := userService.Token.GenerateToken(&tdto)
+		if err != nil {
+			userService.Logger.Info(logging.Internal, logging.Select, err.Error(), nil)
+			return nil, err
+		}
+
+		return tokenDetail, nil
 
 	} else {
+		err = userService.Otp.ValidateOtp(dto.Mobile, dto.Otp)
+		if err != nil {
+			userService.Logger.Info(logging.OTP, logging.Select, err.Error(), nil)
+			return nil, err
+		}
 		err := userService.Db.Table("users").
-			Where("mobile_number = ?", dto.Mobile).
+			Where("mobile = ?", dto.Mobile).
 			Preload("UserRoles", func(tx *gorm.DB) *gorm.DB {
 				return tx.Preload("Role")
 			}).
@@ -130,16 +176,10 @@ func (userService *UserService) RegisterLoginByMobile(dto dto.RegisterLoginByMob
 		}
 		tdto.Roles = roles
 		tokenDetail, err := userService.Token.GenerateToken(&tdto)
-		if err!= nil {
-            userService.Logger.Info(logging.Internal, logging.Select, err.Error(), nil)
-            return nil, err
-        }
-
+		if err != nil {
+			userService.Logger.Info(logging.Internal, logging.Select, err.Error(), nil)
+			return nil, err
+		}
 		return tokenDetail, nil
 	}
-	if err != nil {
-		userService.Logger.Info(logging.Internal, logging.Select, err.Error(), nil)
-		return nil, err
-	}
-	return nil, nil
 }

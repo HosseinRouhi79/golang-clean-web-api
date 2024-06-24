@@ -15,10 +15,10 @@ var logger = logging.NewLogger(cfg)
 
 func (userService *UserService) ExistBytMobile(mobile string) (error, bool) {
 	model := models.User{}
-	err := userService.Db.Table("users").Where("mobile_number = ?", mobile).First(&model).Error
+	err := userService.Db.Table("users").Where("mobile = ?", mobile).First(&model).Error
 	if err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
-			logger.Info(logging.Postgres, logging.Api, "Record(mobile_number) not found", nil)
+			logger.Info(logging.Postgres, logging.Api, "Record(mobile) not found", nil)
 			return nil, false
 		}
 		logger.Info(logging.Postgres, logging.Api, err.Error(), nil)

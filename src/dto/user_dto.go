@@ -15,5 +15,5 @@ type LoginByUsernameDto struct {
 
 type RegisterLoginByMobileDto struct {
 	Mobile string `json:"mobile" binding:"required, mobile, min=11, max=11"`
-	Otp    string `json:"otp" binding:"required, min=6, max=6"`
+	Otp    string `json:"otp" binding:"min=6, max=6"`
 }
