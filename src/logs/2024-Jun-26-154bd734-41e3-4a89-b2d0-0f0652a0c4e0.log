@@ -1,0 +1,21 @@
+{"level":"info","ts":"2024-06-26T11:10:30.135Z","msg":"Redis connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
+{"level":"info","ts":"2024-06-26T11:10:30.136Z","msg":"Redis is already configured","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
+{"level":"info","ts":"2024-06-26T11:10:30.160Z","msg":"Postgres connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Migration"}
+{"level":"info","ts":"2024-06-26T11:10:57.307Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/claim","Latency":0.000019317,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-06-26T11:11:02.033Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/claim","Latency":0.000016978,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-06-26T11:11:05.547Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/claim","Latency":0.000011992,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-06-26T11:11:09.145Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/claim","Latency":0.000803153,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-06-26T11:11:13.317Z","msg":"","AppName":"myApp","LoggerName":"Zap","SubCategory":"Api","Path":"/api/claim","Latency":0.00120939,"Category":"RequestResponse"}
+{"level":"info","ts":"2024-06-26T11:11:15.599Z","msg":"","AppName":"myApp","LoggerName":"Zap","SubCategory":"Api","Path":"/api/claim","Latency":0.000019166,"Category":"RequestResponse"}
+{"level":"info","ts":"2024-06-26T11:11:17.099Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/claim","Latency":0.000018866,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-06-26T11:11:18.192Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/claim","Latency":0.000012844,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-06-26T11:11:25.792Z","msg":"","AppName":"myApp","LoggerName":"Zap","Latency":0.000022559,"Category":"RequestResponse","SubCategory":"Api","Path":"/api/claim"}
+{"level":"info","ts":"2024-06-26T11:11:26.835Z","msg":"","AppName":"myApp","LoggerName":"Zap","SubCategory":"Api","Path":"/api/claim","Latency":0.000014397,"Category":"RequestResponse"}
+{"level":"info","ts":"2024-06-26T11:11:27.860Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/claim","Latency":0.000022713,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-06-26T11:11:29.467Z","msg":"","AppName":"myApp","LoggerName":"Zap","SubCategory":"Api","Path":"/api/claim","Latency":0.000016773,"Category":"RequestResponse"}
+{"level":"info","ts":"2024-06-26T11:11:31.959Z","msg":"","AppName":"myApp","LoggerName":"Zap","Category":"RequestResponse","SubCategory":"Api","Path":"/api/claim","Latency":0.000035931}
+{"level":"info","ts":"2024-06-26T11:11:33.689Z","msg":"","AppName":"myApp","LoggerName":"Zap","Latency":0.000012306,"Category":"RequestResponse","SubCategory":"Api","Path":"/api/claim"}
+{"level":"info","ts":"2024-06-26T11:11:35.744Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/claim","Latency":0.000012079,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-06-26T11:11:37.376Z","msg":"","AppName":"myApp","LoggerName":"Zap","Latency":0.000017044,"Category":"RequestResponse","SubCategory":"Api","Path":"/api/claim"}
+{"level":"info","ts":"2024-06-26T11:13:02.341Z","msg":"Record(mobile) not found","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Api"}
+{"level":"info","ts":"2024-06-26T11:13:02.492Z","msg":"","AppName":"myApp","LoggerName":"Zap","SubCategory":"Api","Path":"/api/register-login-mobile","Latency":0.166680002,"Category":"RequestResponse"}
