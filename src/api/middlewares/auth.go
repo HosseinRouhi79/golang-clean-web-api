@@ -33,7 +33,7 @@ func Authentication(cfg *config.Config) gin.HandlerFunc {
 				}
 			}
 		}
-		if err != nil {
+		if err == nil {
 			c.Set("id", claimsMap["id"])
 			c.Set("userName", claimsMap["userName"])
 			c.Set("firstName", claimsMap["firstName"])
@@ -41,8 +41,31 @@ func Authentication(cfg *config.Config) gin.HandlerFunc {
 			c.Set("mobileNumber", claimsMap["mobileNumber"])
 			c.Set("email", claimsMap["email"])
 			c.Set("roles", claimsMap["roles"])
+			c.Set("exp", claimsMap["exp"])
 
 			c.Next()
+		}
+	}
+}
+
+func Authorization(validRoles []string) gin.HandlerFunc{
+	return func(c *gin.Context) {
+		var err error
+		var roleList []string
+		roleval, ok := c.Keys["roles"]
+		if !ok{
+			err = fmt.Errorf("error has occured")
+		} else{
+			roleList = append(roleList, roleval.([]string)...)
+		}
+		if err == nil{
+			for _, role := range roleList{
+				for _, vRole := range validRoles{
+					if role == vRole{
+						c.Next()
+					}
+				}
+			}
 		}
 	}
 }
