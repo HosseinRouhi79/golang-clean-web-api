@@ -19,6 +19,17 @@ type AuthMobile struct {
 	Otp    string `form:"otp"`
 }
 
+// User_Auth godoc
+// @Summary User Auth
+// @Description Register Login
+// @Tags auth
+// @Accept  x-www-form-urlencoded
+// @Produce  json
+// @Param mobile formData string true "Mobile number"
+// @Param otp formData string false "OTP"
+// @Success 200 {object} helper.HTTPResponse "Success"
+// @Failure 400 {object} helper.HTTPResponse "Failed"
+// @Router /register-login-mobile/ [post]
 func (auth AuthMobile) RLMobile(c *gin.Context) {
 
 	am := AuthMobile{}

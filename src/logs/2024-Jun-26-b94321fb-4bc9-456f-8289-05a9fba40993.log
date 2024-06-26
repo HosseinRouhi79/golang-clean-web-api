@@ -1,0 +1,20 @@
+{"level":"info","ts":"2024-06-26T05:26:47.490Z","msg":"Redis connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
+{"level":"info","ts":"2024-06-26T05:26:47.490Z","msg":"Redis is already configured","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
+{"level":"info","ts":"2024-06-26T05:26:47.505Z","msg":"Postgres connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Migration"}
+{"level":"info","ts":"2024-06-26T05:27:27.979Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/swagger/index.html","Latency":0.000427706,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-06-26T05:27:28.147Z","msg":"","AppName":"myApp","LoggerName":"Zap","Latency":0.001784989,"Category":"RequestResponse","SubCategory":"Api","Path":"/swagger/swagger-ui.css"}
+{"level":"info","ts":"2024-06-26T05:27:28.151Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/swagger/swagger-ui-standalone-preset.js","Latency":0.00359561,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-06-26T05:27:28.172Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/swagger/swagger-ui-bundle.js","Latency":0.02039292,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-06-26T05:27:28.393Z","msg":"","AppName":"myApp","LoggerName":"Zap","SubCategory":"Api","Path":"/swagger/favicon-32x32.png","Latency":0.000024627,"Category":"RequestResponse"}
+{"level":"info","ts":"2024-06-26T05:27:28.430Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/swagger/doc.json","Latency":0.000080769,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-06-26T05:27:42.191Z","msg":"Record(mobile) not found","AppName":"myApp","LoggerName":"Zap","SubCategory":"Api","Category":"Postgres"}
+{"level":"info","ts":"2024-06-26T05:27:42.354Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/register-login-mobile","Latency":0.533237852,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-06-26T05:27:56.733Z","msg":"Record(mobile) not found","AppName":"myApp","LoggerName":"Zap","SubCategory":"Api","Category":"Postgres"}
+{"level":"info","ts":"2024-06-26T05:27:56.820Z","msg":"error in creating model","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Select"}
+{"level":"info","ts":"2024-06-26T05:27:56.820Z","msg":"","AppName":"myApp","LoggerName":"Zap","Latency":0.099689792,"Category":"RequestResponse","SubCategory":"Api","Path":"/api/register-login-mobile"}
+{"level":"info","ts":"2024-06-26T05:28:02.783Z","msg":"Record(mobile) not found","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Api"}
+{"level":"info","ts":"2024-06-26T05:28:02.867Z","msg":"error in creating model","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Select"}
+{"level":"info","ts":"2024-06-26T05:28:02.869Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/register-login-mobile","Latency":0.099038476,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-06-26T05:28:03.870Z","msg":"Record(mobile) not found","AppName":"myApp","LoggerName":"Zap","SubCategory":"Api","Category":"Postgres"}
+{"level":"info","ts":"2024-06-26T05:28:03.959Z","msg":"error in creating model","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Select"}
+{"level":"info","ts":"2024-06-26T05:28:03.959Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/register-login-mobile","Latency":0.104289918,"Category":"RequestResponse","SubCategory":"Api"}

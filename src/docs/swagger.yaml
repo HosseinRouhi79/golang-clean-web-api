@@ -26,6 +26,35 @@ definitions:
 info:
   contact: {}
 paths:
+  /register-login-mobile/:
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      description: Register Login
+      parameters:
+      - description: Mobile number
+        in: formData
+        name: mobile
+        required: true
+        type: string
+      - description: OTP
+        in: formData
+        name: otp
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: '#/definitions/helper.HTTPResponse'
+        "400":
+          description: Failed
+          schema:
+            $ref: '#/definitions/helper.HTTPResponse'
+      summary: User Auth
+      tags:
+      - auth
   /v1/health/:
     get:
       consumes:
