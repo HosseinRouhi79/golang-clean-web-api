@@ -1,6 +1,7 @@
 package middlewares
 
 import (
+	"fmt"
 	"strings"
 
 	"github.com/HosseinRouhi79/golang-clean-web-api/src/config"
@@ -16,19 +17,32 @@ func Authentication(cfg *config.Config) gin.HandlerFunc {
 		var claimsMap map[string]interface{}
 		tokenService := services.NewTokenService(cfg)
 		auth := c.GetHeader(constants.Authorization)
+		if auth == "" {
+			err = fmt.Errorf("auth header doesnt exist")
+		} else {
+			token := strings.Split(auth, " ")
+			accessToken := token[1]
 
-		token := strings.Split(auth, " ")
-		accessToken := token[1]
-
-		claimsMap, err = tokenService.GetClaims(accessToken)
-		if err != nil {
-			switch err.(*jwt.ValidationError).Errors {
-			case jwt.ValidationErrorExpired:
-				tokenService.Logger.Infof("token is expired: %s", err.Error())
-			default:
-				tokenService.Logger.Infof("error has occurred: %s", err.Error())
+			claimsMap, err = tokenService.GetClaims(accessToken)
+			if err != nil {
+				switch err.(*jwt.ValidationError).Errors {
+				case jwt.ValidationErrorExpired:
+					err = fmt.Errorf("token is expired")
+				default:
+					err = fmt.Errorf("error has occured")
+				}
 			}
 		}
+		if err != nil {
+			c.Set("id", claimsMap["id"])
+			c.Set("userName", claimsMap["userName"])
+			c.Set("firstName", claimsMap["firstName"])
+			c.Set("lastName", claimsMap["lastName"])
+			c.Set("mobileNumber", claimsMap["mobileNumber"])
+			c.Set("email", claimsMap["email"])
+			c.Set("roles", claimsMap["roles"])
 
+			c.Next()
+		}
 	}
 }
