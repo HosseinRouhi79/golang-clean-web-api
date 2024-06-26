@@ -59,6 +59,16 @@ func (auth AuthMobile) RLMobile(c *gin.Context) {
 	})
 }
 
+// User_Auth godoc
+// @Summary Get Claims
+// @Description Register Login
+// @Tags auth
+// @Accept  x-www-form-urlencoded
+// @Produce  json
+// @Param token formData string false "jwt token"
+// @Success 200 {object} helper.HTTPResponse "Success"
+// @Failure 400 {object} helper.HTTPResponse "Failed"
+// @Router /claim/ [post]
 func (t TokenHandler) GetClaims(c *gin.Context) {
 	err := c.ShouldBind(&t)
 
@@ -70,6 +80,7 @@ func (t TokenHandler) GetClaims(c *gin.Context) {
 	}
 
 	tokenService := services.NewTokenService(cfg)
+	// fmt.Println(t.Token)
 	mpClaims, _ := tokenService.GetClaims(t.Token)
 
 	c.JSON(http.StatusOK, gin.H{

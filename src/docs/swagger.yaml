@@ -26,6 +26,30 @@ definitions:
 info:
   contact: {}
 paths:
+  /claim/:
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      description: Register Login
+      parameters:
+      - description: jwt token
+        in: formData
+        name: token
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: '#/definitions/helper.HTTPResponse'
+        "400":
+          description: Failed
+          schema:
+            $ref: '#/definitions/helper.HTTPResponse'
+      summary: Get Claims
+      tags:
+      - auth
   /register-login-mobile/:
     post:
       consumes:
