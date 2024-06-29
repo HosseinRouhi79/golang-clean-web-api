@@ -73,7 +73,13 @@ func (cs *CountryService) Update(ctx context.Context, req *dto.CreateUpdateCount
 	}
 
 	tx.Commit()
+	country := models.Country{}
+	cs.DB.Model(models.Country{}).Where("id = ?", id).First(&country)
 
+	res = &dto.CountryResponse{
+		Name: country.Name,
+	}
+	return res, nil
 }
 
 //delete
