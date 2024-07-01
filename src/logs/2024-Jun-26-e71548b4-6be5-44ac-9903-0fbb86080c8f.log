@@ -1,5 +1,0 @@
-{"level":"info","ts":"2024-06-26T11:00:54.878Z","msg":"Redis connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
-{"level":"info","ts":"2024-06-26T11:00:54.880Z","msg":"Redis is already configured","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
-{"level":"info","ts":"2024-06-26T11:00:54.895Z","msg":"Postgres connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Migration"}
-{"level":"info","ts":"2024-06-26T11:00:58.164Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/claim","Latency":0.000492091,"Category":"RequestResponse","SubCategory":"Api"}
-{"level":"info","ts":"2024-06-26T11:01:01.040Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/claim","Latency":0.000510591,"Category":"RequestResponse","SubCategory":"Api"}

@@ -82,6 +82,28 @@ func (cs *CountryService) Update(ctx context.Context, req *dto.CreateUpdateCount
 	return res, nil
 }
 
-//delete
+// delete
+func (cs *CountryService) Delete(ctx context.Context, id int) (res *dto.CountryResponse, err error) {
+	country := models.Country{}
+	tx := cs.DB.WithContext(ctx).Begin()
+	err = tx.
+		Model(models.Country{}).
+		Where("id = ?", id).
+		Delete(&country).
+		Error
+
+	if err != nil {
+		tx.Rollback()
+		cs.Logger.Info(logging.Postgres, logging.Delete, err.Error(), nil)
+		return nil, err
+	}
+
+	tx.Commit()
+	res = &dto.CountryResponse{
+		Name: "", // Name is empty because the country is deleted
+	}
+
+	return res, nil
+}
 
 //get by ID

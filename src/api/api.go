@@ -91,4 +91,10 @@ func RegisterRoute(r *gin.Engine) {
 		routers.GetJWT(formGroup)
 		routers.Auth(formGroup)
 	}
+
+	v7 := r.Group("/api/")
+	{
+		formGroup := v7.Group("")
+		routers.Country(formGroup)
+	}
 }
