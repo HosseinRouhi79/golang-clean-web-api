@@ -19,17 +19,17 @@ type BaseModel struct {
 }
 
 // creating hook
-func (b *BaseModel) BeforeCreate(tx *gorm.DB) (err error) {
-	value := tx.Statement.Context.Value("UserId")
-	var userId = -1
-	// TODO: check userId type
-	if value != nil {
-		userId = int(value.(float64))
-	}
-	b.CreatedAt = time.Now().UTC()
-	b.CreatedBy = userId
-	return
-}
+// func (b *BaseModel) BeforeCreate(tx *gorm.DB) (err error) {
+// 	value := tx.Statement.Context.Value("UserId")
+// 	var userId = -1
+// 	// TODO: check userId type
+// 	if value != nil {
+// 		userId = int(value.(float64))
+// 	}
+// 	b.CreatedAt = time.Now().UTC()
+// 	b.CreatedBy = userId
+// 	return
+// }
 
 func (b *BaseModel) BeforeUpdate(tx *gorm.DB) (err error) {
 	value := tx.Statement.Context.Value("userID")

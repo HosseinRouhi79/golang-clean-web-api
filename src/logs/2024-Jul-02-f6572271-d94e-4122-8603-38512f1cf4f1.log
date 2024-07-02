@@ -1,0 +1,36 @@
+{"level":"info","ts":"2024-07-02T04:42:20.727Z","msg":"Redis connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
+{"level":"info","ts":"2024-07-02T04:42:20.728Z","msg":"Redis is already configured","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
+{"level":"info","ts":"2024-07-02T04:42:20.744Z","msg":"Postgres connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Migration"}
+{"level":"info","ts":"2024-07-02T04:42:31.720Z","msg":"failed to get from redis:[dial tcp 127.0.0.1:6380: connect: connection refused]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-07-02T04:42:31.720Z","msg":"dial tcp 127.0.0.1:6380: connect: connection refused","AppName":"myApp","LoggerName":"Zap","Category":"OTP","SubCategory":"Select"}
+{"level":"info","ts":"2024-07-02T04:42:31.720Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/register-login-mobile","Latency":0.043535345,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-07-02T04:50:28.052Z","msg":"failed to get from redis:[redis: nil]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-07-02T04:50:28.052Z","msg":"redis: nil","AppName":"myApp","LoggerName":"Zap","Category":"OTP","SubCategory":"Select"}
+{"level":"info","ts":"2024-07-02T04:50:28.052Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/register-login-mobile","Latency":0.023532644,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-07-02T04:50:29.809Z","msg":"failed to get from redis:[redis: nil]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-07-02T04:50:29.809Z","msg":"redis: nil","AppName":"myApp","LoggerName":"Zap","SubCategory":"Select","Category":"OTP"}
+{"level":"info","ts":"2024-07-02T04:50:29.809Z","msg":"","AppName":"myApp","LoggerName":"Zap","SubCategory":"Api","Path":"/api/register-login-mobile","Latency":0.02197026,"Category":"RequestResponse"}
+{"level":"info","ts":"2024-07-02T04:50:38.726Z","msg":"Record(mobile) not found","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Api"}
+{"level":"info","ts":"2024-07-02T04:50:38.896Z","msg":"","AppName":"myApp","LoggerName":"Zap","SubCategory":"Api","Path":"/api/register-login-mobile","Latency":0.19191732,"Category":"RequestResponse"}
+{"level":"info","ts":"2024-07-02T04:50:55.807Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/c/create","Latency":0.020101121,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-07-02T04:51:13.544Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/c/create","Latency":0.02029132,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-07-02T04:51:17.459Z","msg":"","AppName":"myApp","LoggerName":"Zap","Category":"RequestResponse","SubCategory":"Api","Path":"/api/c/create","Latency":0.017699738}
+{"level":"info","ts":"2024-07-02T04:58:22.939Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/c/create","Latency":0.000101978,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-07-02T04:58:26.292Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/c/create","Latency":0.000117399,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-07-02T04:58:28.659Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/c/create","Latency":0.000056733,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-07-02T04:59:08.106Z","msg":"","AppName":"myApp","LoggerName":"Zap","SubCategory":"Api","Path":"/api/c/create","Latency":0.00003399,"Category":"RequestResponse"}
+{"level":"info","ts":"2024-07-02T04:59:14.250Z","msg":"","AppName":"myApp","LoggerName":"Zap","Latency":0.000029697,"Category":"RequestResponse","SubCategory":"Api","Path":"/api/c/create"}
+{"level":"info","ts":"2024-07-02T04:59:28.056Z","msg":"Record(mobile) not found","AppName":"myApp","LoggerName":"Zap","SubCategory":"Api","Category":"Postgres"}
+{"level":"info","ts":"2024-07-02T04:59:28.205Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/register-login-mobile","Latency":0.165688739,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-07-02T05:00:51.670Z","msg":"invalid value, should be pointer to struct or slice","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Delete"}
+{"level":"info","ts":"2024-07-02T05:00:51.671Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/c/delete","Latency":0.015249155,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-07-02T05:00:54.666Z","msg":"invalid value, should be pointer to struct or slice","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Delete"}
+{"level":"info","ts":"2024-07-02T05:00:54.667Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/c/delete","Latency":0.016927233,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-07-02T05:01:03.768Z","msg":"invalid value, should be pointer to struct or slice","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Delete"}
+{"level":"info","ts":"2024-07-02T05:01:03.769Z","msg":"","AppName":"myApp","LoggerName":"Zap","Latency":0.014795824,"Category":"RequestResponse","SubCategory":"Api","Path":"/api/c/delete"}
+{"level":"info","ts":"2024-07-02T05:01:08.146Z","msg":"invalid value, should be pointer to struct or slice","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Delete"}
+{"level":"info","ts":"2024-07-02T05:01:08.147Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/c/delete","Latency":0.012135898,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-07-02T05:01:25.534Z","msg":"invalid value, should be pointer to struct or slice","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Delete"}
+{"level":"info","ts":"2024-07-02T05:01:25.534Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/c/delete","Latency":0.01530607,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-07-02T05:01:30.664Z","msg":"invalid value, should be pointer to struct or slice","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Delete"}
+{"level":"info","ts":"2024-07-02T05:01:30.672Z","msg":"","AppName":"myApp","LoggerName":"Zap","SubCategory":"Api","Path":"/api/c/delete","Latency":0.025064146,"Category":"RequestResponse"}

@@ -1,0 +1,5 @@
+{"level":"info","ts":"2024-07-02T05:09:44.502Z","msg":"Redis connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
+{"level":"info","ts":"2024-07-02T05:09:44.503Z","msg":"Redis is already configured","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
+{"level":"info","ts":"2024-07-02T05:09:44.520Z","msg":"Postgres connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Migration"}
+{"level":"info","ts":"2024-07-02T05:09:46.462Z","msg":"invalid value, should be pointer to struct or slice","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Delete"}
+{"level":"info","ts":"2024-07-02T05:09:46.468Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/c/delete","Latency":0.021724966,"Category":"RequestResponse","SubCategory":"Api"}

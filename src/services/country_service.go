@@ -3,6 +3,7 @@ package services
 import (
 	"context"
 	"database/sql"
+	"fmt"
 	"time"
 
 	"github.com/HosseinRouhi79/golang-clean-web-api/src/config"
@@ -54,9 +55,9 @@ func (cs *CountryService) Update(ctx context.Context, req *dto.CreateUpdateCount
 
 	//create updateMap
 	updateMap := map[string]interface{}{
-		"Name":        req.Name,
-		"Modified_by": sql.NullInt64{Int64: int64(ctx.Value("id").(float64)), Valid: true},
-		"Modified_at": sql.NullTime{Time: time.Now().UTC(), Valid: true},
+		"name":        req.Name,
+		"modified_by": sql.NullInt64{Int64: int64(ctx.Value("id").(float64)), Valid: true},
+		"modified_at": sql.NullTime{Time: time.Now().UTC(), Valid: true},
 	}
 
 	tx := cs.DB.WithContext(ctx).Begin()
@@ -84,16 +85,23 @@ func (cs *CountryService) Update(ctx context.Context, req *dto.CreateUpdateCount
 
 // delete
 func (cs *CountryService) Delete(ctx context.Context, id int) (res *dto.CountryResponse, err error) {
-	country := models.Country{}
+
+	deletedMap := map[string]interface{}{
+		"deleted_by": sql.NullInt64{Int64: int64(ctx.Value("id").(float64)), Valid: true},
+		"deleted_at": sql.NullTime{Time: time.Now().UTC(), Valid: true},
+	}
+
+	fmt.Println(deletedMap)
 	tx := cs.DB.WithContext(ctx).Begin()
 	err = tx.
-		Model(models.Country{}).
+		Model(&models.Country{}).
 		Where("id = ?", id).
-		Delete(&country).
+		Updates(deletedMap).
 		Error
 
 	if err != nil {
 		tx.Rollback()
+		fmt.Println(err.Error())
 		cs.Logger.Info(logging.Postgres, logging.Delete, err.Error(), nil)
 		return nil, err
 	}
