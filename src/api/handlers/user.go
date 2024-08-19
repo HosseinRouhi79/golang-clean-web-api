@@ -10,7 +10,7 @@ import (
 )
 
 type OtpRequest struct {
-	Mobile string `json:"mobileNumber" binding:"required,mobile,min=11,max=11"`
+	Mobile string `form:"mobile" binding:"required,mobile,min=11,max=11"`
 }
 
 type UserHandler struct {
@@ -18,6 +18,16 @@ type UserHandler struct {
 	OtpService  services.OtpService
 }
 
+// OTP godoc
+// @Summary Send OTP request
+// @Description OTP request
+// @Tags auth
+// @Accept  x-www-form-urlencoded
+// @Produce  json
+// @Param token formData string false "mobile"
+// @Success 200 {object} helper.HTTPResponse "Success"
+// @Failure 400 {object} helper.HTTPResponse "Failed"
+// @Router /send-otp/ [post]
 func (h UserHandler) SendOtp(c *gin.Context) {
 	cfg := config.GetConfig()
 	// logger := logging.NewLogger(cfg)
@@ -26,7 +36,7 @@ func (h UserHandler) SendOtp(c *gin.Context) {
 		UserService: *services.NewUserService(cfg),
 	}
 	req := OtpRequest{}
-	err := c.ShouldBindJSON(&req)
+	err := c.ShouldBind(&req)
 	var status bool = true
 	var code int = 200
 	if err != nil {
@@ -54,5 +64,6 @@ func (h UserHandler) SendOtp(c *gin.Context) {
 	// send OTP SMS
 	c.JSON(code, gin.H{
 		"status": status,
+		"OTP":    strconv.Itoa(otpCode),
 	})
 }

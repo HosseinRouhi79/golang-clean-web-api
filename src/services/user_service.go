@@ -47,6 +47,7 @@ func (userService *UserService) Register(dto dto.RegisterationDto) error {
 	model.LastName = dto.LastName
 	model.Username = dto.Username
 	model.Email = dto.Email
+	model.Password = dto.Password
 
 	err, val := userService.ExistByEmail(model.Email)
 	if err != nil {
@@ -111,7 +112,7 @@ func (userService *UserService) RegisterLoginByMobile(dto dto.RegisterLoginByMob
 			return nil, err
 		}
 		user.Password = string(hp)
-		tx := userService.Db.Begin()
+		tx := userService.Db.Begin() //transaction start
 		err = tx.Create(&user).Error
 		if err != nil {
 			tx.Rollback()
@@ -136,7 +137,7 @@ func (userService *UserService) RegisterLoginByMobile(dto dto.RegisterLoginByMob
 			return nil, err
 		}
 
-		for _, r := range userRoles{
+		for _, r := range userRoles {
 			roles = append(roles, r.Role.Name)
 		}
 

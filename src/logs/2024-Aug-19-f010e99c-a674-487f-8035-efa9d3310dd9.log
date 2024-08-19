@@ -1,0 +1,20 @@
+{"level":"info","ts":"2024-08-19T04:56:10.930Z","msg":"Redis connected successfully","AppName":"myApp","LoggerName":"Zap","SubCategory":"Migration","Category":"Redis"}
+{"level":"info","ts":"2024-08-19T04:56:10.930Z","msg":"Redis is already configured","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
+{"level":"info","ts":"2024-08-19T04:56:10.967Z","msg":"Postgres connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Migration"}
+{"level":"info","ts":"2024-08-19T04:57:01.669Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/swagger/index.html","Latency":0.000715841,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-08-19T04:57:01.776Z","msg":"","AppName":"myApp","LoggerName":"Zap","Category":"RequestResponse","SubCategory":"Api","Path":"/swagger/swagger-ui.css","Latency":0.005321111}
+{"level":"info","ts":"2024-08-19T04:57:01.798Z","msg":"","AppName":"myApp","LoggerName":"Zap","Category":"RequestResponse","SubCategory":"Api","Path":"/swagger/swagger-ui-bundle.js","Latency":0.032974268}
+{"level":"info","ts":"2024-08-19T04:57:01.807Z","msg":"","AppName":"myApp","LoggerName":"Zap","Category":"RequestResponse","SubCategory":"Api","Path":"/swagger/swagger-ui-standalone-preset.js","Latency":0.025885009}
+{"level":"info","ts":"2024-08-19T04:57:02.143Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/swagger/doc.json","Latency":0.000464923,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-08-19T04:58:01.322Z","msg":"failed to get from redis:[dial tcp 127.0.0.1:6380: connect: connection refused]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-08-19T04:58:01.322Z","msg":"dial tcp 127.0.0.1:6380: connect: connection refused","AppName":"myApp","LoggerName":"Zap","Category":"OTP","SubCategory":"Select"}
+{"level":"info","ts":"2024-08-19T04:58:01.322Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/register-login-mobile","Latency":0.041648432,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-08-19T04:58:35.059Z","msg":"failed to get from redis:[redis: nil]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-08-19T04:58:35.060Z","msg":"redis: nil","AppName":"myApp","LoggerName":"Zap","Category":"OTP","SubCategory":"Select"}
+{"level":"info","ts":"2024-08-19T04:58:35.062Z","msg":"","AppName":"myApp","LoggerName":"Zap","SubCategory":"Api","Path":"/api/register-login-mobile","Latency":0.023197993,"Category":"RequestResponse"}
+{"level":"info","ts":"2024-08-19T04:58:36.204Z","msg":"failed to get from redis:[redis: nil]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-08-19T04:58:36.204Z","msg":"redis: nil","AppName":"myApp","LoggerName":"Zap","Category":"OTP","SubCategory":"Select"}
+{"level":"info","ts":"2024-08-19T04:58:36.204Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/register-login-mobile","Latency":0.023699695,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-08-19T04:58:44.716Z","msg":"failed to get from redis:[redis: nil]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-08-19T04:58:44.716Z","msg":"redis: nil","AppName":"myApp","LoggerName":"Zap","Category":"OTP","SubCategory":"Select"}
+{"level":"info","ts":"2024-08-19T04:58:44.716Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/register-login-mobile","Latency":0.014007065,"Category":"RequestResponse","SubCategory":"Api"}

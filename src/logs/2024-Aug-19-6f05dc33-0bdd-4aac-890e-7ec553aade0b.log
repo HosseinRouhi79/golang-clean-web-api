@@ -1,0 +1,19 @@
+{"level":"info","ts":"2024-08-19T05:18:25.296Z","msg":"Redis connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
+{"level":"info","ts":"2024-08-19T05:18:25.296Z","msg":"Redis is already configured","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
+{"level":"info","ts":"2024-08-19T05:18:25.310Z","msg":"Postgres connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Migration"}
+{"level":"info","ts":"2024-08-19T05:18:27.731Z","msg":"error has occured: [invalid character 'o' in literal true (expecting 'r')]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-08-19T05:18:27.731Z","msg":"","AppName":"myApp","LoggerName":"Zap","Latency":0.000628506,"Category":"RequestResponse","SubCategory":"Api","Path":"/api/send-otp"}
+{"level":"info","ts":"2024-08-19T05:18:30.182Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/swagger/index.html","Latency":0.000206191,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-08-19T05:18:30.226Z","msg":"","AppName":"myApp","LoggerName":"Zap","SubCategory":"Api","Path":"/swagger/swagger-ui.css","Latency":0.00486267,"Category":"RequestResponse"}
+{"level":"info","ts":"2024-08-19T05:18:30.248Z","msg":"","AppName":"myApp","LoggerName":"Zap","Category":"RequestResponse","SubCategory":"Api","Path":"/swagger/swagger-ui-standalone-preset.js","Latency":0.005073651}
+{"level":"info","ts":"2024-08-19T05:18:30.298Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/swagger/swagger-ui-bundle.js","Latency":0.04799369,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-08-19T05:18:30.430Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/swagger/doc.json","Latency":0.000339132,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-08-19T05:18:30.438Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/swagger/favicon-32x32.png","Latency":0.00021751,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-08-19T05:18:38.880Z","msg":"error has occured: [invalid character 'o' in literal true (expecting 'r')]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-08-19T05:18:38.881Z","msg":"","AppName":"myApp","LoggerName":"Zap","SubCategory":"Api","Path":"/api/send-otp","Latency":0.000825716,"Category":"RequestResponse"}
+{"level":"info","ts":"2024-08-19T05:21:35.444Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/redis/send-otp","Latency":0.000000426,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-08-19T05:21:49.285Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/send-otp","Latency":0.000000307,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-08-19T05:21:56.162Z","msg":"error has occured: [invalid character '-' in numeric literal]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-08-19T05:21:56.162Z","msg":"","AppName":"myApp","LoggerName":"Zap","Category":"RequestResponse","SubCategory":"Api","Path":"/api/send-otp","Latency":0.000789233}
+{"level":"info","ts":"2024-08-19T05:22:02.517Z","msg":"error has occured: [invalid character '-' in numeric literal]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-08-19T05:22:02.517Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/send-otp","Latency":0.000515649,"Category":"RequestResponse","SubCategory":"Api"}

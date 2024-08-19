@@ -79,6 +79,76 @@ paths:
       summary: User Auth
       tags:
       - auth
+  /register/:
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      description: Register
+      parameters:
+      - description: first name
+        in: formData
+        name: firstName
+        required: true
+        type: string
+      - description: last name
+        in: formData
+        name: lastName
+        required: true
+        type: string
+      - description: username
+        in: formData
+        name: username
+        required: true
+        type: string
+      - description: email
+        in: formData
+        name: email
+        required: true
+        type: string
+      - description: password
+        in: formData
+        name: password
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: '#/definitions/helper.HTTPResponse'
+        "400":
+          description: Failed
+          schema:
+            $ref: '#/definitions/helper.HTTPResponse'
+      summary: User Auth
+      tags:
+      - auth
+  /send-otp/:
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      description: OTP request
+      parameters:
+      - description: mobile
+        in: formData
+        name: token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: '#/definitions/helper.HTTPResponse'
+        "400":
+          description: Failed
+          schema:
+            $ref: '#/definitions/helper.HTTPResponse'
+      summary: Send OTP request
+      tags:
+      - auth
   /v1/health/:
     get:
       consumes:
