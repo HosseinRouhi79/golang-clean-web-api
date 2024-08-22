@@ -179,7 +179,7 @@ const docTemplate = `{
                     {
                         "type": "string",
                         "description": "mobile",
-                        "name": "token",
+                        "name": "mobile",
                         "in": "formData",
                         "required": true
                     }

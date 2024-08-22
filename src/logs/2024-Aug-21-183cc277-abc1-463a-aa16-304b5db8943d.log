@@ -1,0 +1,11 @@
+{"level":"info","ts":"2024-08-21T05:08:53.493Z","msg":"Redis connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
+{"level":"info","ts":"2024-08-21T05:08:53.494Z","msg":"Redis is already configured","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
+{"level":"info","ts":"2024-08-21T05:08:53.509Z","msg":"Postgres connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Migration"}
+{"level":"info","ts":"2024-08-21T05:09:00.033Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/swagger/index.html","Latency":0.000152282,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-08-21T05:09:00.082Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/swagger/swagger-ui.css","Latency":0.002907488,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-08-21T05:09:00.105Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/swagger/swagger-ui-bundle.js","Latency":0.022631946,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-08-21T05:09:00.109Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/swagger/swagger-ui-standalone-preset.js","Latency":0.025986912,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-08-21T05:09:00.262Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/swagger/doc.json","Latency":0.000465217,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-08-21T05:09:00.297Z","msg":"","AppName":"myApp","LoggerName":"Zap","Latency":0.000039007,"Category":"RequestResponse","SubCategory":"Api","Path":"/swagger/favicon-32x32.png"}
+{"level":"info","ts":"2024-08-21T05:09:09.961Z","msg":"error has occured: [Key: 'OtpRequest.Mobile' Error:Field validation for 'Mobile' failed on the 'required' tag]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-08-21T05:09:09.961Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/send-otp","Latency":0.002100101,"Category":"RequestResponse","SubCategory":"Api"}

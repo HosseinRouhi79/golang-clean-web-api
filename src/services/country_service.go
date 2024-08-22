@@ -4,6 +4,7 @@ import (
 	"context"
 	"database/sql"
 	"fmt"
+	"strconv"
 	"time"
 
 	"github.com/HosseinRouhi79/golang-clean-web-api/src/config"
@@ -115,3 +116,21 @@ func (cs *CountryService) Delete(ctx context.Context, id int) (res *dto.CountryR
 }
 
 //get by ID
+
+func (cs *CountryService) GetByID(ctx context.Context, id string) (res *dto.CountryResponse, err error) {
+	country := &models.Country{}
+
+	err = cs.DB.
+		Model(&models.Country{}).
+		Where("id = ?", id).
+		First(&country).Error
+	if err != nil {
+		cs.Logger.Info(logging.Postgres, logging.Select, err.Error(), nil)
+	}
+	res = &dto.CountryResponse{
+		Id: strconv.Itoa(country.Id),
+		Name: country.Name,
+
+	}
+	return res, nil
+}

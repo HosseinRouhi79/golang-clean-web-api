@@ -1,0 +1,9 @@
+{"level":"info","ts":"2024-08-21T05:22:04.024Z","msg":"Redis connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
+{"level":"info","ts":"2024-08-21T05:22:04.025Z","msg":"Redis is already configured","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
+{"level":"info","ts":"2024-08-21T05:22:04.044Z","msg":"Postgres connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Migration"}
+{"level":"info","ts":"2024-08-21T05:22:13.361Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/swagger/index.html","Latency":0.000387816,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-08-21T05:22:13.541Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/swagger/doc.json","Latency":0.000662043,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-08-21T05:22:20.439Z","msg":"error has occured: [Key: 'OtpRequest.Mobile' Error:Field validation for 'Mobile' failed on the 'mobile' tag]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-08-21T05:22:20.439Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/send-otp","Latency":0.000650178,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-08-21T05:22:31.265Z","msg":"error has occured: [Key: 'OtpRequest.Mobile' Error:Field validation for 'Mobile' failed on the 'mobile' tag]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-08-21T05:22:31.265Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/send-otp","Latency":0.001620548,"Category":"RequestResponse","SubCategory":"Api"}

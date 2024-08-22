@@ -17,6 +17,10 @@ type CountryDelete struct {
 	Id string
 }
 
+type CountryID struct {
+	Id string
+}
+
 func (co Country) Create(c *gin.Context) {
 
 	cfg := config.GetConfig()
@@ -41,4 +45,15 @@ func (cd CountryDelete) Delete(c *gin.Context) {
 	}
 	id, _ := strconv.Atoi(cd.Id)
 	cs.Delete(c, id)
+}
+
+func (ci CountryID) GetByID(c *gin.Context){
+	cfg := config.GetConfig()
+	cs := services.NewCountryService(cfg)
+
+	err := c.ShouldBind(&ci)
+	if err != nil{
+		cs.Logger.Infof("err get country id :%s", err.Error())
+	}
+	cs.GetByID(c, ci.Id)
 }

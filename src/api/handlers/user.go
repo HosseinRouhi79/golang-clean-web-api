@@ -10,7 +10,7 @@ import (
 )
 
 type OtpRequest struct {
-	Mobile string `form:"mobile" binding:"required,mobile,min=11,max=11"`
+	Mobile string `form:"mobile" binding:"mobile,min=11,max=11"`
 }
 
 type UserHandler struct {
@@ -24,7 +24,7 @@ type UserHandler struct {
 // @Tags auth
 // @Accept  x-www-form-urlencoded
 // @Produce  json
-// @Param token formData string false "mobile"
+// @Param mobile formData string true "mobile"
 // @Success 200 {object} helper.HTTPResponse "Success"
 // @Failure 400 {object} helper.HTTPResponse "Failed"
 // @Router /send-otp/ [post]
@@ -45,6 +45,7 @@ func (h UserHandler) SendOtp(c *gin.Context) {
 		code = 500
 		c.JSON(code, gin.H{
 			"status": status,
+			"err":    err.Error(),
 		})
 		return
 	}
@@ -57,6 +58,7 @@ func (h UserHandler) SendOtp(c *gin.Context) {
 		code = 400
 		c.JSON(code, gin.H{
 			"status": status,
+			"err":    err.Error(),
 		})
 		return
 	}

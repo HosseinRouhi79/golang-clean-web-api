@@ -132,7 +132,7 @@ paths:
       parameters:
       - description: mobile
         in: formData
-        name: token
+        name: mobile
         required: true
         type: string
       produces:
