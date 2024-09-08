@@ -62,11 +62,11 @@ func (s BaseService[T, Tc, Tu, Tr]) Create(c context.Context, req Tc) (res *Tr, 
 func (s BaseService[T, Tc, Tu, Tr]) Update(c context.Context, req Tu, id int) (res *Tr, err error) {
 
 	updateMap, _ := helper.TypeConverter[map[string]interface{}](req)
-	(*updateMap)["modifiedby"] = &sql.NullInt64{Int64: int64(c.Value("id").(float64)), Valid: true}
-	(*updateMap)["modifiedat"] = sql.NullTime{Valid: true, Time: time.Now().UTC()}
+	(*updateMap)["modified_by"] = &sql.NullInt64{Int64: int64(c.Value("id").(float64)), Valid: true}
+	(*updateMap)["modified_at"] = sql.NullTime{Valid: true, Time: time.Now().UTC()}
 	model := new(T)
 	err = s.DB.Model(model).
-		Where("id", "=?", id).
+		Where("id = ?", id).
 		Updates(*updateMap).
 		Error
 

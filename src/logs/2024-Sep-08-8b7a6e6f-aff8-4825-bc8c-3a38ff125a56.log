@@ -1,0 +1,18 @@
+{"level":"info","ts":"2024-09-08T14:45:48.290Z","msg":"Redis connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
+{"level":"info","ts":"2024-09-08T14:45:48.291Z","msg":"Redis is already configured","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
+{"level":"info","ts":"2024-09-08T14:45:48.317Z","msg":"Postgres connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Migration"}
+{"level":"info","ts":"2024-09-08T14:46:00.732Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/swagger/index.html","Latency":0.000132106,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-09-08T14:46:00.791Z","msg":"","AppName":"myApp","LoggerName":"Zap","Category":"RequestResponse","SubCategory":"Api","Path":"/swagger/swagger-ui.css","Latency":0.003905737}
+{"level":"info","ts":"2024-09-08T14:46:00.798Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/swagger/swagger-ui-standalone-preset.js","Latency":0.005231698,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-09-08T14:46:00.824Z","msg":"","AppName":"myApp","LoggerName":"Zap","Latency":0.023948032,"Category":"RequestResponse","SubCategory":"Api","Path":"/swagger/swagger-ui-bundle.js"}
+{"level":"info","ts":"2024-09-08T14:46:01.043Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/swagger/doc.json","Latency":0.00130514,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-09-08T14:46:01.063Z","msg":"","AppName":"myApp","LoggerName":"Zap","Latency":0.000055341,"Category":"RequestResponse","SubCategory":"Api","Path":"/swagger/favicon-32x32.png"}
+{"level":"info","ts":"2024-09-08T14:46:21.692Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/c/update","Latency":0.000068785,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-09-08T14:47:40.265Z","msg":"failed to get from redis:[redis: nil]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-09-08T14:47:40.267Z","msg":"data set successfully","AppName":"myApp","LoggerName":"Zap","Category":"Internal","SubCategory":"Insert"}
+{"level":"info","ts":"2024-09-08T14:47:40.268Z","msg":"","AppName":"myApp","LoggerName":"Zap","Latency":0.004921645,"Category":"RequestResponse","SubCategory":"Api","Path":"/api/send-otp"}
+{"level":"info","ts":"2024-09-08T14:47:50.902Z","msg":"result is:[{193110 false}]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-09-08T14:47:50.930Z","msg":"data set successfully","AppName":"myApp","LoggerName":"Zap","SubCategory":"Insert","Category":"Internal"}
+{"level":"info","ts":"2024-09-08T14:47:50.957Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/register-login-mobile","Latency":0.091154979,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-09-08T14:48:12.537Z","msg":"Error updating: [ERROR: column \"modifiedat\" of relation \"countries\" does not exist (SQLSTATE 42703)]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-09-08T14:48:12.537Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/c/update","Latency":0.011162086,"Category":"RequestResponse","SubCategory":"Api"}

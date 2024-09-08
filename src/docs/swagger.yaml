@@ -53,6 +53,38 @@ paths:
       summary: Country
       tags:
       - country
+  /c/update:
+    put:
+      consumes:
+      - application/x-www-form-urlencoded
+      description: Update country
+      parameters:
+      - description: country name
+        in: formData
+        name: name
+        required: true
+        type: string
+      - description: country id
+        in: formData
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: '#/definitions/helper.HTTPResponse'
+        "400":
+          description: Failed
+          schema:
+            $ref: '#/definitions/helper.HTTPResponse'
+      security:
+      - AuthBearer: []
+      summary: Country
+      tags:
+      - country
   /claim/:
     post:
       consumes:

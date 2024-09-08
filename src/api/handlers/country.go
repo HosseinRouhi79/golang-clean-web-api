@@ -16,6 +16,11 @@ type Country struct {
 	Name      string    `form:"name"`
 }
 
+type CountryUpdate struct {
+	Id   int `form:"id"`
+	Name string `form:"name"`
+}
+
 type CountryDelete struct {
 	Id string
 }
@@ -45,6 +50,46 @@ func (co Country) Create(c *gin.Context) {
 		Name: co.Name,
 	}
 	res, err := cs.Create(c, *dto)
+	if err != nil {
+		c.AbortWithStatusJSON(400, gin.H{
+			"error": err.Error(),
+		})
+		return
+	}
+	c.JSON(200, gin.H{
+		"status": true,
+		"data":   res,
+	})
+}
+
+// Country godoc
+// @Summary Country
+// @Description Update country
+// @Tags country
+// @Accept  x-www-form-urlencoded
+// @Produce  json
+// @Param name formData string true "country name"
+// @Param id formData string true "country id"
+// @Success 200 {object} helper.HTTPResponse "Success"
+// @Failure 400 {object} helper.HTTPResponse "Failed"
+// @Router /c/update [put]
+// @Security AuthBearer
+func (co CountryUpdate) Update(c *gin.Context) {
+
+	cfg := config.GetConfig()
+	cs := services.NewBaseService[Country, dto.CreateUpdateCountry, dto.CreateUpdateCountry, dto.CountryResponse](cfg)
+
+	err := c.ShouldBind(&co)
+	if err != nil {
+		c.AbortWithStatusJSON(400, gin.H{
+			"binding error": err.Error(),
+		})
+		return
+	}
+	dto := &dto.CreateUpdateCountry{
+		Name: co.Name,
+	}
+	res, err := cs.Update(c, *dto, co.Id)
 	if err != nil {
 		c.AbortWithStatusJSON(400, gin.H{
 			"error": err.Error(),

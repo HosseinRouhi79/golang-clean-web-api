@@ -1,0 +1,5 @@
+{"level":"info","ts":"2024-09-08T14:48:47.852Z","msg":"Redis connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
+{"level":"info","ts":"2024-09-08T14:48:47.853Z","msg":"Redis is already configured","AppName":"myApp","LoggerName":"Zap","SubCategory":"Migration","Category":"Redis"}
+{"level":"info","ts":"2024-09-08T14:48:47.875Z","msg":"Postgres connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Migration"}
+{"level":"info","ts":"2024-09-08T14:48:49.738Z","msg":"Error updating: [ERROR: invalid input syntax for type bigint: \"id\" (SQLSTATE 22P02)]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-09-08T14:48:49.739Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/c/update","Latency":0.020143188,"Category":"RequestResponse","SubCategory":"Api"}
