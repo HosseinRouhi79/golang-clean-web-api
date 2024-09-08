@@ -38,13 +38,23 @@ type CountryID struct {
 func (co Country) Create(c *gin.Context) {
 
 	cfg := config.GetConfig()
-	cs := services.NewBaseService[Country, dto.CreateUpdateCountry, dto.CountryResponse](cfg)
+	cs := services.NewBaseService[Country, dto.CreateUpdateCountry, dto.CreateUpdateCountry, dto.CountryResponse](cfg)
 
 	c.ShouldBind(&co)
 	dto := &dto.CreateUpdateCountry{
 		Name: co.Name,
 	}
-	cs.Create(c, *dto)
+	res, err := cs.Create(c, *dto)
+	if err != nil {
+		c.AbortWithStatusJSON(400, gin.H{
+			"error": err.Error(),
+		})
+		return
+	}
+	c.JSON(200, gin.H{
+		"status": true,
+		"data":   res,
+	})
 }
 
 func (cd CountryDelete) Delete(c *gin.Context) {

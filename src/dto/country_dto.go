@@ -6,6 +6,6 @@ type CreateUpdateCountry struct{
 }
 
 type CountryResponse struct{
-	Id string `json:"id"`
+	Id string `json:"-"`
 	Name string `json:"name"`
 }

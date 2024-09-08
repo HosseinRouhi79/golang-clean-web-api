@@ -2,6 +2,7 @@ package services
 
 import (
 	"context"
+	"database/sql"
 	"fmt"
 	"time"
 
@@ -12,19 +13,19 @@ import (
 	"gorm.io/gorm"
 )
 
-type BaseService[T any, Tc any, Tr any] struct {
+type BaseService[T any, Tc any, Tu any, Tr any] struct {
 	DB     *gorm.DB
 	Logger logging.Logger
 }
 
-func NewBaseService[T any, Tc any, Tr any](cfg *config.Config) *BaseService[T, Tc, Tr] {
-	return &BaseService[T, Tc, Tr]{
+func NewBaseService[T any, Tc any, Tu any, Tr any](cfg *config.Config) *BaseService[T, Tc, Tu, Tr] {
+	return &BaseService[T, Tc, Tu, Tr]{
 		DB:     db.GetDB(),
 		Logger: logging.NewLogger(cfg),
 	}
 }
 
-func (s BaseService[T, Tc, Tr]) Create(c context.Context, req Tc) (res *Tr, err error) {
+func (s BaseService[T, Tc, Tu, Tr]) Create(c context.Context, req Tc) (res *Tr, err error) {
 	model, err := helper.TypeConverter[map[string]interface{}](req)
 	if err != nil {
 		return nil, err
@@ -40,7 +41,6 @@ func (s BaseService[T, Tc, Tr]) Create(c context.Context, req Tc) (res *Tr, err 
 		return nil, err
 	}
 	fmt.Println(model2)
-	
 	err = tx.Create(&model2).Error
 
 	if err != nil {
@@ -57,4 +57,37 @@ func (s BaseService[T, Tc, Tr]) Create(c context.Context, req Tc) (res *Tr, err 
 	}
 	return res, nil
 
+}
+
+func (s BaseService[T, Tc, Tu, Tr]) Update(c context.Context, req Tu, id int) (res *Tr, err error) {
+
+	updateMap, _ := helper.TypeConverter[map[string]interface{}](req)
+	(*updateMap)["modifiedby"] = &sql.NullInt64{Int64: int64(c.Value("id").(float64)), Valid: true}
+	(*updateMap)["modifiedat"] = sql.NullTime{Valid: true, Time: time.Now().UTC()}
+	model := new(T)
+	err = s.DB.Model(model).
+		Where("id", "=?", id).
+		Updates(*updateMap).
+		Error
+
+	if err != nil {
+		s.Logger.Infof("Error updating: %s", err.Error())
+		return nil, err
+	}
+
+	type response struct {
+		status int
+		msg    string
+	}
+	res2 := response{
+		status: 200,
+		msg:    "updated successfully",
+	}
+
+	response2, err := helper.TypeConverter[Tr](res2)
+	if err != nil {
+		s.Logger.Infof("Error converting: %s", err.Error())
+		return nil, err
+	}
+	return response2, nil
 }
