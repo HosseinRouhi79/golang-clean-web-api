@@ -116,6 +116,7 @@ func (auth AuthMobile) RLMobile(c *gin.Context) {
 // @Summary Get Claims
 // @Description Register Login
 // @Tags auth
+// @Security AuthBearer
 // @Accept  x-www-form-urlencoded
 // @Produce  json
 // @Param token formData string false "jwt token"
@@ -141,4 +142,3 @@ func (t TokenHandler) GetClaims(c *gin.Context) {
 		"claims": mpClaims,
 	})
 }
-

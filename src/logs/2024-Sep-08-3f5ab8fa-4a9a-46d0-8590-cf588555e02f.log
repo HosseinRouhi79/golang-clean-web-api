@@ -1,0 +1,9 @@
+{"level":"info","ts":"2024-09-08T05:37:55.761Z","msg":"Redis connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
+{"level":"info","ts":"2024-09-08T05:37:55.762Z","msg":"Redis is already configured","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
+{"level":"info","ts":"2024-09-08T05:37:55.781Z","msg":"Postgres connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Migration"}
+{"level":"info","ts":"2024-09-08T05:38:01.340Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/swagger/index.html","Latency":0.000252427,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-09-08T05:38:01.387Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/swagger/swagger-ui.css","Latency":0.001258518,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-09-08T05:38:01.394Z","msg":"","AppName":"myApp","LoggerName":"Zap","SubCategory":"Api","Path":"/swagger/swagger-ui-standalone-preset.js","Latency":0.004714516,"Category":"RequestResponse"}
+{"level":"info","ts":"2024-09-08T05:38:01.402Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/swagger/swagger-ui-bundle.js","Latency":0.012550563,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-09-08T05:38:01.519Z","msg":"","AppName":"myApp","LoggerName":"Zap","Latency":0.001056467,"Category":"RequestResponse","SubCategory":"Api","Path":"/swagger/doc.json"}
+{"level":"info","ts":"2024-09-08T05:38:01.555Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/swagger/favicon-32x32.png","Latency":0.000065524,"Category":"RequestResponse","SubCategory":"Api"}

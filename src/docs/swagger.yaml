@@ -26,6 +26,33 @@ definitions:
 info:
   contact: {}
 paths:
+  /c/create:
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      description: Create a new country
+      parameters:
+      - description: country name
+        in: formData
+        name: name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: '#/definitions/helper.HTTPResponse'
+        "400":
+          description: Failed
+          schema:
+            $ref: '#/definitions/helper.HTTPResponse'
+      security:
+      - AuthBearer: []
+      summary: Country
+      tags:
+      - country
   /claim/:
     post:
       consumes:
@@ -47,6 +74,8 @@ paths:
           description: Failed
           schema:
             $ref: '#/definitions/helper.HTTPResponse'
+      security:
+      - AuthBearer: []
       summary: Get Claims
       tags:
       - auth
@@ -168,4 +197,9 @@ paths:
       summary: Health Check
       tags:
       - health
+securityDefinitions:
+  AuthBearer:
+    in: header
+    name: Authorization
+    type: apiKey
 swagger: "2.0"

@@ -15,8 +15,56 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
+        "/c/create": {
+            "post": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Create a new country",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "country"
+                ],
+                "summary": "Country",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "country name",
+                        "name": "name",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/helper.HTTPResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Failed",
+                        "schema": {
+                            "$ref": "#/definitions/helper.HTTPResponse"
+                        }
+                    }
+                }
+            }
+        },
         "/claim/": {
             "post": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
                 "description": "Register Login",
                 "consumes": [
                     "application/x-www-form-urlencoded"
@@ -266,6 +314,13 @@ const docTemplate = `{
                     "type": "string"
                 }
             }
+        }
+    },
+    "securityDefinitions": {
+        "AuthBearer": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
         }
     }
 }`

@@ -7,7 +7,9 @@ import (
 	"github.com/HosseinRouhi79/golang-clean-web-api/src/data/db"
 	// "github.com/HosseinRouhi79/golang-clean-web-api/src/data/db/migrations"
 )
-
+// @securityDefinitions.apikey AuthBearer
+// @in header
+// @name Authorization
 func main() {
 
 	cfg := config.GetConfig()

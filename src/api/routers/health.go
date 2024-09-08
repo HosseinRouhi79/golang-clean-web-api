@@ -15,8 +15,8 @@ func Health(r *gin.RouterGroup) {
 func Test(r *gin.RouterGroup) {
 	handler := handlers.NewTest()
 	r.GET("/", handler.HeaderBind)
-	r.GET("/query", handler.QueryBind)
-	r.GET("/query2/:id/:name", handler.UriBind)
+	r.GET("/query", handler.QueryBind)          //query ?
+	r.GET("/query2/:id/:name", handler.UriBind) //uri /id/name
 }
 
 func BodyBinder(r *gin.RouterGroup) {
@@ -34,13 +34,10 @@ func GetFromRedisRouter(r *gin.RouterGroup) {
 	r.GET("/get/:key", handler.GetFromRedis)
 }
 
-func GetJWT(r *gin.RouterGroup){
+func GetJWT(r *gin.RouterGroup) {
 	handler := handlers.JWT{}
 	handler2 := handlers.User{}
 	r.GET("/get/jwt", handler.Generate)
 	r.GET("/get/jwt/validate", handler.Validate)
 	r.GET("/get/repo", handler2.TestRepo)
 }
-
-
-

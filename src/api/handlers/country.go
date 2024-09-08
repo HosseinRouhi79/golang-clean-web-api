@@ -10,7 +10,7 @@ import (
 )
 
 type Country struct {
-	Name string
+	Name string `form:"name"`
 }
 
 type CountryDelete struct {
@@ -21,6 +21,18 @@ type CountryID struct {
 	Id string
 }
 
+
+// Country godoc
+// @Summary Country
+// @Description Create a new country
+// @Tags country
+// @Accept  x-www-form-urlencoded
+// @Produce  json
+// @Param name formData string true "country name"
+// @Success 200 {object} helper.HTTPResponse "Success"
+// @Failure 400 {object} helper.HTTPResponse "Failed"
+// @Router /c/create [post]
+// @Security AuthBearer
 func (co Country) Create(c *gin.Context) {
 
 	cfg := config.GetConfig()
@@ -30,7 +42,6 @@ func (co Country) Create(c *gin.Context) {
 	dto := &dto.CreateUpdateCountry{
 		Name: co.Name,
 	}
-
 	cs.Create(c, dto)
 }
 
