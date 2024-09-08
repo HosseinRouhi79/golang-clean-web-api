@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"strconv"
+	"time"
 
 	"github.com/HosseinRouhi79/golang-clean-web-api/src/config"
 	"github.com/HosseinRouhi79/golang-clean-web-api/src/dto"
@@ -10,7 +11,9 @@ import (
 )
 
 type Country struct {
-	Name string `form:"name"`
+	CreatedBy int       `form:"createdby"`
+	CreatedAt time.Time `form:"createdat"`
+	Name      string    `form:"name"`
 }
 
 type CountryDelete struct {
@@ -20,7 +23,6 @@ type CountryDelete struct {
 type CountryID struct {
 	Id string
 }
-
 
 // Country godoc
 // @Summary Country
@@ -36,13 +38,13 @@ type CountryID struct {
 func (co Country) Create(c *gin.Context) {
 
 	cfg := config.GetConfig()
-	cs := services.NewCountryService(cfg)
+	cs := services.NewBaseService[Country, dto.CreateUpdateCountry, dto.CountryResponse](cfg)
 
 	c.ShouldBind(&co)
 	dto := &dto.CreateUpdateCountry{
 		Name: co.Name,
 	}
-	cs.Create(c, dto)
+	cs.Create(c, *dto)
 }
 
 func (cd CountryDelete) Delete(c *gin.Context) {
@@ -51,19 +53,19 @@ func (cd CountryDelete) Delete(c *gin.Context) {
 	cs := services.NewCountryService(cfg)
 
 	err := c.ShouldBind(&cd)
-	if err != nil{
+	if err != nil {
 		cs.Logger.Infof("err: %v", err)
 	}
 	id, _ := strconv.Atoi(cd.Id)
 	cs.Delete(c, id)
 }
 
-func (ci CountryID) GetByID(c *gin.Context){
+func (ci CountryID) GetByID(c *gin.Context) {
 	cfg := config.GetConfig()
 	cs := services.NewCountryService(cfg)
 
 	err := c.ShouldBind(&ci)
-	if err != nil{
+	if err != nil {
 		cs.Logger.Infof("err get country id :%s", err.Error())
 	}
 	cs.GetByID(c, ci.Id)
