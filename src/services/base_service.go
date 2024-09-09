@@ -89,8 +89,8 @@ func (s BaseService[T, Tc, Tu, Tr]) Delete(c context.Context, id int) (err error
 
 	tx := s.DB.WithContext(c).Begin()
 	deletedMap := &map[string]interface{}{
-		// "deleted_by": int(c.Value("id").(float64)),
-		// "deleted_at": time.Now().UTC(),
+		"deleted_by": int(c.Value("id").(float64)),
+		"deleted_at": time.Now().UTC(),
 	}
 
 	model := new(T)
