@@ -75,16 +75,11 @@ func (s BaseService[T, Tc, Tu, Tr]) Update(c context.Context, req Tu, id int) (r
 		return nil, err
 	}
 
-	type response struct {
-		status int
-		msg    string
-	}
-	res2 := response{
-		status: 200,
-		msg:    "updated successfully",
-	}
 
-	response2, err := helper.TypeConverter[Tr](res2)
+
+	response2, err := helper.TypeConverter[Tr](model)
+
+	fmt.Println(response2)
 	if err != nil {
 		s.Logger.Infof("Error converting: %s", err.Error())
 		return nil, err
