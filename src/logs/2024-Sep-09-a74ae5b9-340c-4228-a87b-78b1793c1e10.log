@@ -1,0 +1,12 @@
+{"level":"info","ts":"2024-09-09T07:58:28.749Z","msg":"Redis connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
+{"level":"info","ts":"2024-09-09T07:58:28.751Z","msg":"Redis is already configured","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
+{"level":"info","ts":"2024-09-09T07:58:28.774Z","msg":"Postgres connected successfully","AppName":"myApp","LoggerName":"Zap","SubCategory":"Migration","Category":"Postgres"}
+{"level":"info","ts":"2024-09-09T07:58:30.035Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/c/delete","Latency":0.015122534,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-09-09T08:00:05.203Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/c/delete","Latency":0.000064122,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-09-09T08:00:37.375Z","msg":"failed to get from redis:[redis: nil]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-09-09T08:00:37.376Z","msg":"data set successfully","AppName":"myApp","LoggerName":"Zap","Category":"Internal","SubCategory":"Insert"}
+{"level":"info","ts":"2024-09-09T08:00:37.376Z","msg":"","AppName":"myApp","LoggerName":"Zap","Category":"RequestResponse","SubCategory":"Api","Path":"/api/send-otp","Latency":0.003722265}
+{"level":"info","ts":"2024-09-09T08:00:46.245Z","msg":"result is:[{969928 false}]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-09-09T08:00:46.247Z","msg":"data set successfully","AppName":"myApp","LoggerName":"Zap","Category":"Internal","SubCategory":"Insert"}
+{"level":"info","ts":"2024-09-09T08:00:46.278Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/register-login-mobile","Latency":0.046755236,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-09-09T08:01:18.890Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/c/delete","Latency":0.01215266,"Category":"RequestResponse","SubCategory":"Api"}

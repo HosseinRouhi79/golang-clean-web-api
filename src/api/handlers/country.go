@@ -1,7 +1,7 @@
 package handlers
 
 import (
-	"strconv"
+	"fmt"
 	"time"
 
 	"github.com/HosseinRouhi79/golang-clean-web-api/src/config"
@@ -17,12 +17,12 @@ type Country struct {
 }
 
 type CountryUpdate struct {
-	Id   int `form:"id"`
+	Id   int    `form:"id"`
 	Name string `form:"name"`
 }
 
 type CountryDelete struct {
-	Id string
+	Id int `form:"id"`
 }
 
 type CountryID struct {
@@ -45,7 +45,13 @@ func (co Country) Create(c *gin.Context) {
 	cfg := config.GetConfig()
 	cs := services.NewBaseService[Country, dto.CreateUpdateCountry, dto.CreateUpdateCountry, dto.CountryResponse](cfg)
 
-	c.ShouldBind(&co)
+	err := c.ShouldBind(&co)
+	if err != nil {
+		c.AbortWithStatusJSON(400, gin.H{
+			"error": err.Error(),
+		})
+		return
+	}
 	dto := &dto.CreateUpdateCountry{
 		Name: co.Name,
 	}
@@ -102,17 +108,34 @@ func (co CountryUpdate) Update(c *gin.Context) {
 	})
 }
 
+// Country godoc
+// @Summary Country
+// @Description Delete country
+// @Tags country
+// @Accept  x-www-form-urlencoded
+// @Produce  json
+// @Param id formData string true "country id"
+// @Success 200 {object} helper.HTTPResponse "Success"
+// @Failure 400 {object} helper.HTTPResponse "Failed"
+// @Router /c/delete [put]
+// @Security AuthBearer
 func (cd CountryDelete) Delete(c *gin.Context) {
 
 	cfg := config.GetConfig()
-	cs := services.NewCountryService(cfg)
+	cs := services.NewBaseService[Country, dto.CreateUpdateCountry, dto.CreateUpdateCountry, dto.CountryResponse](cfg)
 
 	err := c.ShouldBind(&cd)
 	if err != nil {
+		c.AbortWithStatusJSON(400, gin.H{
+			"error": err.Error(),
+		})
+		return
+	}
+	if err != nil {
+		fmt.Println(err.Error())
 		cs.Logger.Infof("err: %v", err)
 	}
-	id, _ := strconv.Atoi(cd.Id)
-	cs.Delete(c, id)
+	cs.Delete(c, cd.Id)
 }
 
 func (ci CountryID) GetByID(c *gin.Context) {

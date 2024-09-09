@@ -75,8 +75,6 @@ func (s BaseService[T, Tc, Tu, Tr]) Update(c context.Context, req Tu, id int) (r
 		return nil, err
 	}
 
-
-
 	response2, err := helper.TypeConverter[Tr](model)
 
 	fmt.Println(response2)
@@ -85,4 +83,39 @@ func (s BaseService[T, Tc, Tu, Tr]) Update(c context.Context, req Tu, id int) (r
 		return nil, err
 	}
 	return response2, nil
+}
+
+func (s BaseService[T, Tc, Tu, Tr]) Delete(c context.Context, id int) (err error) {
+
+	tx := s.DB.WithContext(c).Begin()
+	deletedMap := &map[string]interface{}{
+		// "deleted_by": int(c.Value("id").(float64)),
+		// "deleted_at": time.Now().UTC(),
+	}
+
+	model := new(T)
+
+	if c.Value("id") == nil {
+		err = fmt.Errorf("missing id in context")
+		return err
+	}
+
+	(*deletedMap)["modified_by"] = int(c.Value("id").(float64))
+	(*deletedMap)["modified_at"] = time.Now().UTC()
+
+	fmt.Println(*deletedMap)
+	fmt.Println(model)
+	fmt.Println(id)
+	if cnt := tx.
+		Model(model).
+		Where("id = ?", id).
+		Updates(deletedMap).
+		RowsAffected; cnt == 0 {
+		fmt.Println(400)
+		tx.Rollback()
+	}
+
+	tx.Commit()
+	fmt.Println(model)
+	return nil
 }
