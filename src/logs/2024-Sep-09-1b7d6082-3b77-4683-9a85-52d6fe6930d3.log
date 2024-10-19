@@ -1,5 +1,0 @@
-{"level":"info","ts":"2024-09-09T07:53:53.072Z","msg":"Redis connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
-{"level":"info","ts":"2024-09-09T07:53:53.073Z","msg":"Redis is already configured","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
-{"level":"info","ts":"2024-09-09T07:53:53.085Z","msg":"Postgres connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Migration"}
-{"level":"info","ts":"2024-09-09T07:53:55.568Z","msg":"err: [strconv.Atoi: parsing \"\": invalid syntax]","AppName":"myApp","LoggerName":"Zap"}
-{"level":"info","ts":"2024-09-09T07:53:55.581Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/c/delete","Latency":0.013086975,"Category":"RequestResponse","SubCategory":"Api"}

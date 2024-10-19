@@ -35,11 +35,20 @@ func Up_1() {
 	{
 		ci := []models.City{{Name: "Test City", CountryID: 1}}
 		c := models.Country{Name: "Test Country"}
+		c1 := models.Country{Name: "Brazil"}
+		c2 := models.Country{Name: "Italy"}
+		c3 := models.Country{Name: "Germany"}
+		c4 := models.Country{Name: "Iran"}
+		c5 := models.Country{Name: "China"}
+		c6 := models.Country{Name: "Bolivia"}
 
-		c.Id = 1
 		c.Cities = &ci
 
-		db.Create(&c)
+		countryList := []models.Country{
+			c, c1, c2, c3, c4, c5, c6,
+		}
+
+		db.Create(&countryList)
 	}
 	{
 		pass := "12345678"

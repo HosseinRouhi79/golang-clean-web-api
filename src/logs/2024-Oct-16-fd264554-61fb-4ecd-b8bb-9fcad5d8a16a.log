@@ -1,0 +1,80 @@
+{"level":"info","ts":"2024-10-16T07:09:45.534Z","msg":"Redis connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
+{"level":"info","ts":"2024-10-16T07:09:45.534Z","msg":"Redis is already configured","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
+{"level":"info","ts":"2024-10-16T07:09:45.552Z","msg":"Postgres connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Migration"}
+{"level":"info","ts":"2024-10-16T07:10:02.194Z","msg":"","AppName":"myApp","LoggerName":"Zap","Category":"RequestResponse","SubCategory":"Api","Path":"/swagger/index.html","Latency":0.000185183}
+{"level":"info","ts":"2024-10-16T07:10:02.238Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/swagger/swagger-ui.css","Latency":0.002464388,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-10-16T07:10:02.275Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/swagger/swagger-ui-standalone-preset.js","Latency":0.026858654,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-10-16T07:10:02.283Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/swagger/swagger-ui-bundle.js","Latency":0.047809373,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-10-16T07:10:02.570Z","msg":"","AppName":"myApp","LoggerName":"Zap","Latency":0.000584021,"Category":"RequestResponse","SubCategory":"Api","Path":"/swagger/doc.json"}
+{"level":"info","ts":"2024-10-16T07:13:28.440Z","msg":"failed to get from redis:[dial tcp 127.0.0.1:6380: connect: connection refused]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-10-16T07:13:28.444Z","msg":"failed to set data in Redis: [dial tcp 127.0.0.1:6380: connect: connection refused]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-10-16T07:13:28.444Z","msg":"can not set otp code: [dial tcp 127.0.0.1:6380: connect: connection refused]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-10-16T07:13:28.444Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/send-otp","Latency":0.005889221,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-10-16T07:15:08.792Z","msg":"failed to get from redis:[redis: nil]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-10-16T07:15:08.796Z","msg":"data set successfully","AppName":"myApp","LoggerName":"Zap","Category":"Internal","SubCategory":"Insert"}
+{"level":"info","ts":"2024-10-16T07:15:08.796Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/send-otp","Latency":0.012865895,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-10-16T07:15:55.683Z","msg":"Record(mobile) not found","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Api"}
+{"level":"info","ts":"2024-10-16T07:15:55.786Z","msg":"Role not found","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"DefaultRoleNotFound"}
+{"level":"info","ts":"2024-10-16T07:15:55.866Z","msg":"error in creating user-role","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Select"}
+{"level":"info","ts":"2024-10-16T07:15:55.868Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/register-login-mobile","Latency":0.237629012,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-10-16T07:16:07.072Z","msg":"Record(mobile) not found","AppName":"myApp","LoggerName":"Zap","SubCategory":"Api","Category":"Postgres"}
+{"level":"info","ts":"2024-10-16T07:16:07.181Z","msg":"Role not found","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"DefaultRoleNotFound"}
+{"level":"info","ts":"2024-10-16T07:16:07.185Z","msg":"error in creating user-role","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Select"}
+{"level":"info","ts":"2024-10-16T07:16:07.185Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/register-login-mobile","Latency":0.133837899,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-10-16T07:16:21.203Z","msg":"Record(mobile) not found","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Api"}
+{"level":"info","ts":"2024-10-16T07:16:21.321Z","msg":"Role not found","AppName":"myApp","LoggerName":"Zap","SubCategory":"DefaultRoleNotFound","Category":"Postgres"}
+{"level":"info","ts":"2024-10-16T07:16:21.328Z","msg":"error in creating user-role","AppName":"myApp","LoggerName":"Zap","SubCategory":"Select","Category":"Postgres"}
+{"level":"info","ts":"2024-10-16T07:16:21.328Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/register-login-mobile","Latency":0.145222297,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-10-16T07:16:22.390Z","msg":"Record(mobile) not found","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Api"}
+{"level":"info","ts":"2024-10-16T07:16:22.503Z","msg":"Role not found","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"DefaultRoleNotFound"}
+{"level":"info","ts":"2024-10-16T07:16:22.508Z","msg":"error in creating user-role","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Select"}
+{"level":"info","ts":"2024-10-16T07:16:22.508Z","msg":"","AppName":"myApp","LoggerName":"Zap","Category":"RequestResponse","SubCategory":"Api","Path":"/api/register-login-mobile","Latency":0.137299615}
+{"level":"info","ts":"2024-10-16T07:17:16.311Z","msg":"Record(mobile) not found","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Api"}
+{"level":"info","ts":"2024-10-16T07:17:16.429Z","msg":"Role not found","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"DefaultRoleNotFound"}
+{"level":"info","ts":"2024-10-16T07:17:16.435Z","msg":"error in creating user-role","AppName":"myApp","LoggerName":"Zap","SubCategory":"Select","Category":"Postgres"}
+{"level":"info","ts":"2024-10-16T07:17:16.435Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/register-login-mobile","Latency":0.140600505,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-10-16T07:22:26.013Z","msg":"Record(mobile) not found","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Api"}
+{"level":"info","ts":"2024-10-16T07:22:26.162Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/register-login-mobile","Latency":0.1706287,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-10-16T07:23:20.873Z","msg":"result is:[{833405 false}]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-10-16T07:23:20.873Z","msg":"the otp is not valid","AppName":"myApp","LoggerName":"Zap","Category":"OTP","SubCategory":"Select"}
+{"level":"info","ts":"2024-10-16T07:23:20.873Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/register-login-mobile","Latency":0.021525491,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-10-16T07:23:27.162Z","msg":"result is:[{833405 false}]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-10-16T07:23:27.165Z","msg":"data set successfully","AppName":"myApp","LoggerName":"Zap","Category":"Internal","SubCategory":"Insert"}
+{"level":"info","ts":"2024-10-16T07:23:27.212Z","msg":"","AppName":"myApp","LoggerName":"Zap","Latency":0.072557392,"Category":"RequestResponse","SubCategory":"Api","Path":"/api/register-login-mobile"}
+{"level":"info","ts":"2024-10-16T07:23:29.059Z","msg":"result is:[{833405 true}]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-10-16T07:23:29.059Z","msg":"the otp is used","AppName":"myApp","LoggerName":"Zap","Category":"OTP","SubCategory":"Select"}
+{"level":"info","ts":"2024-10-16T07:23:29.059Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/register-login-mobile","Latency":0.022838688,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-10-16T07:23:30.475Z","msg":"result is:[{833405 true}]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-10-16T07:23:30.475Z","msg":"the otp is used","AppName":"myApp","LoggerName":"Zap","Category":"OTP","SubCategory":"Select"}
+{"level":"info","ts":"2024-10-16T07:23:30.475Z","msg":"","AppName":"myApp","LoggerName":"Zap","Category":"RequestResponse","SubCategory":"Api","Path":"/api/register-login-mobile","Latency":0.020325442}
+{"level":"info","ts":"2024-10-16T07:23:49.503Z","msg":"result is:[{833405 true}]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-10-16T07:23:49.503Z","msg":"can not set otp code: [the otp is used]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-10-16T07:23:49.503Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/send-otp","Latency":0.004147721,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-10-16T07:23:57.440Z","msg":"result is:[{833405 true}]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-10-16T07:23:57.440Z","msg":"can not set otp code: [the otp is used]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-10-16T07:23:57.440Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/send-otp","Latency":0.005267073,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-10-16T07:24:11.504Z","msg":"result is:[{833405 true}]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-10-16T07:24:11.505Z","msg":"can not set otp code: [the otp is used]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-10-16T07:24:11.505Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/send-otp","Latency":0.003903193,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-10-16T07:24:34.883Z","msg":"failed to get from redis:[redis: nil]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-10-16T07:24:34.887Z","msg":"data set successfully","AppName":"myApp","LoggerName":"Zap","Category":"Internal","SubCategory":"Insert"}
+{"level":"info","ts":"2024-10-16T07:24:34.887Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/send-otp","Latency":0.00863044,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-10-16T07:24:45.431Z","msg":"result is:[{496410 false}]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-10-16T07:24:45.431Z","msg":"the otp is not valid","AppName":"myApp","LoggerName":"Zap","Category":"OTP","SubCategory":"Select"}
+{"level":"info","ts":"2024-10-16T07:24:45.431Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/register-login-mobile","Latency":0.024041185,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-10-16T07:24:57.424Z","msg":"result is:[{496410 false}]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-10-16T07:24:57.424Z","msg":"the otp is not valid","AppName":"myApp","LoggerName":"Zap","Category":"OTP","SubCategory":"Select"}
+{"level":"info","ts":"2024-10-16T07:24:57.424Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/register-login-mobile","Latency":0.023378993,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-10-16T07:25:09.906Z","msg":"result is:[{496410 false}]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-10-16T07:25:09.906Z","msg":"the otp is not valid","AppName":"myApp","LoggerName":"Zap","Category":"OTP","SubCategory":"Select"}
+{"level":"info","ts":"2024-10-16T07:25:09.906Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/register-login-mobile","Latency":0.022867073,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-10-16T07:25:13.450Z","msg":"result is:[{496410 false}]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-10-16T07:25:13.452Z","msg":"data set successfully","AppName":"myApp","LoggerName":"Zap","Category":"Internal","SubCategory":"Insert"}
+{"level":"info","ts":"2024-10-16T07:25:13.499Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/register-login-mobile","Latency":0.073233857,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-10-16T07:25:58.871Z","msg":"","AppName":"myApp","LoggerName":"Zap","Category":"RequestResponse","SubCategory":"Api","Path":"/api/claim","Latency":0.000349121}
+{"level":"info","ts":"2024-10-16T07:27:22.225Z","msg":"ERROR: duplicate key value violates unique constraint \"countries_pkey\" (SQLSTATE 23505)","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Insert"}
+{"level":"info","ts":"2024-10-16T07:27:22.225Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/c/create","Latency":0.046184411,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-10-16T07:27:31.043Z","msg":"","AppName":"myApp","LoggerName":"Zap","Category":"RequestResponse","SubCategory":"Api","Path":"/api/c/create","Latency":0.025553417}
+{"level":"info","ts":"2024-10-16T07:27:42.394Z","msg":"","AppName":"myApp","LoggerName":"Zap","Latency":0.027699979,"Category":"RequestResponse","SubCategory":"Api","Path":"/api/c/create"}
+{"level":"info","ts":"2024-10-16T07:28:09.472Z","msg":"","AppName":"myApp","LoggerName":"Zap","SubCategory":"Api","Path":"/api/c/create","Latency":0.027232553,"Category":"RequestResponse"}
+{"level":"info","ts":"2024-10-16T07:28:27.818Z","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/c/delete","Latency":0.023223795,"Category":"RequestResponse","SubCategory":"Api"}
