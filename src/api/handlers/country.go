@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"fmt"
+	"strings"
 	"time"
 
 	"github.com/HosseinRouhi79/golang-clean-web-api/src/api/helper"
@@ -204,21 +205,22 @@ func GetAllCountries(c *gin.Context) {
 // @Failure 400 {object} helper.HTTPResponse "Failed"
 // @Router /c/assign/cities [post]
 func (cities CitiesAssined) AssignCityToCountry(c *gin.Context) {
-	fmt.Println(c.Request)
 	modelCityList := []models.City{}
 	cfg := config.GetConfig()
 
 	err := c.ShouldBind(&cities)
+	fmt.Println(cities)
 	if err != nil {
 		c.AbortWithStatusJSON(400, gin.H{
 			"error": err.Error(),
 		})
 		return
 	}
+	arr := strings.Split(cities.Cities[0], ",")
 	cs := services.NewCountryService(cfg)
-	for index := range cities.Cities{
+	for _, value := range arr {
 		cMap := map[string]string{
-			"name": cities.Cities[index],
+			"name": value,
 		}
 		res, err := helper.TypeConverter[models.City](cMap)
 		if err != nil {
@@ -227,8 +229,11 @@ func (cities CitiesAssined) AssignCityToCountry(c *gin.Context) {
 			})
 			return
 		}
+		fmt.Println(res)
 		modelCityList = append(modelCityList, *res)
 	}
+
+	fmt.Println(modelCityList)
 
 	res, err := cs.AssignCity(c, modelCityList, cities.CountryID)
 	if err != nil {
