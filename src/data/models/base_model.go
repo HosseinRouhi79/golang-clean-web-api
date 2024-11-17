@@ -9,13 +9,13 @@ import (
 
 type BaseModel struct {
 	Id         int           `gorm:"primarykey; type:int"`
-	CreatedAt  time.Time     `gorm:"type: TIMESTAMP with time zone; not null"`
-	ModifiedAt *sql.NullTime `gorm:"type: TIMESTAMP with time zone; null"`
-	DeletedAt  *sql.NullTime `gorm:"type: TIMESTAMP with time zone; null"`
+	CreatedAt time.Time `json:"-" gorm:"type:TIMESTAMP WITH TIME ZONE;not null"`
+	ModifiedAt *sql.NullTime `json:"-" gorm:"type: TIMESTAMP with time zone; null"`
+	DeletedAt  *sql.NullTime `json:"-" gorm:"type: TIMESTAMP with time zone; null"`
 
-	CreatedBy  int `gorm:"not null"` //it gets ID
-	ModifiedBy *sql.NullInt64 `gorm:"null"` //...
-	DeletedBy  *sql.NullInt64 `gorm:"null"` //...
+	CreatedBy  int `json:"-" gorm:"not null"` //it gets ID
+	ModifiedBy *sql.NullInt64 `json:"-" gorm:"null"` //...
+	DeletedBy  *sql.NullInt64 `json:"-" gorm:"null"` //...
 }
 
 // creating hook

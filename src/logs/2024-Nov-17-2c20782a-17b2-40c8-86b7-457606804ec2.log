@@ -1,0 +1,8 @@
+{"level":"info","ts":"2024-11-17T09:22:16.715+0330","msg":"Redis connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
+{"level":"info","ts":"2024-11-17T09:22:16.716+0330","msg":"Redis is already configured","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
+{"level":"info","ts":"2024-11-17T09:22:16.726+0330","msg":"Postgres connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Migration"}
+{"level":"info","ts":"2024-11-17T09:22:22.683+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/c/assign/cities","Latency":0.000314764,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-11-17T09:22:30.102+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/c/assign/cities","Latency":0.000176568,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-11-17T09:22:39.670+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/c/assign/cities","Latency":0.00022531,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-11-17T09:22:44.915+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/c/assign/cities","Latency":0.000171036,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2024-11-17T09:28:35.281+0330","msg":"","AppName":"myApp","LoggerName":"Zap","SubCategory":"Api","Path":"/api/c/assign/cities","Latency":0.000105793,"Category":"RequestResponse"}

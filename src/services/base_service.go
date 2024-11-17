@@ -30,6 +30,7 @@ func (s BaseService[T, Tc, Tu, Tr]) Create(c context.Context, req Tc) (res *Tr, 
 	if err != nil {
 		return nil, err
 	}
+	fmt.Println(c.Value("id"))
 	(*model)["createdby"] = int(c.Value("id").(float64))
 	(*model)["createdat"] = time.Now().UTC()
 	fmt.Println(model)

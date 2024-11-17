@@ -4,7 +4,9 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/HosseinRouhi79/golang-clean-web-api/src/api/helper"
 	"github.com/HosseinRouhi79/golang-clean-web-api/src/config"
+	"github.com/HosseinRouhi79/golang-clean-web-api/src/data/models"
 	"github.com/HosseinRouhi79/golang-clean-web-api/src/dto"
 	"github.com/HosseinRouhi79/golang-clean-web-api/src/services"
 	"github.com/gin-gonic/gin"
@@ -24,9 +26,9 @@ type CountryUpdate struct {
 type CountryDelete struct {
 	Id int `form:"id"`
 }
-
-type CountryID struct {
-	Id string
+type CitiesAssined struct {
+	Cities    []string `form:"cities"`
+	CountryID int      `form:"countryid"`
 }
 
 // Country godoc
@@ -138,13 +140,103 @@ func (cd CountryDelete) Delete(c *gin.Context) {
 	cs.Delete(c, cd.Id)
 }
 
-func (ci CountryID) GetByID(c *gin.Context) {
+// Country godoc
+// @Summary Country
+// @Description Get country
+// @Tags country
+// @Accept  x-www-form-urlencoded
+// @Produce  json
+// @Param id path string true "country id"
+// @Success 200 {object} helper.HTTPResponse "Success"
+// @Failure 400 {object} helper.HTTPResponse "Failed"
+// @Router /c/get/{id} [get]
+// @Security AuthBearer
+func GetByID(c *gin.Context) {
+	cfg := config.GetConfig()
+	cs := services.NewCountryService(cfg)
+	id := c.Param("id")
+
+	res, err := cs.GetByID(c, id)
+	if err != nil {
+		c.AbortWithStatusJSON(400, gin.H{
+			"error": err.Error(),
+		})
+		return
+	}
+	c.JSON(200, res)
+
+}
+
+// Country godoc
+// @Summary Country
+// @Description Get country
+// @Tags country
+// @Accept  x-www-form-urlencoded
+// @Produce  json
+// @Success 200 {object} helper.HTTPResponse "Success"
+// @Failure 400 {object} helper.HTTPResponse "Failed"
+// @Router /c/get/all [get]
+// @Security AuthBearer
+func GetAllCountries(c *gin.Context) {
 	cfg := config.GetConfig()
 	cs := services.NewCountryService(cfg)
 
-	err := c.ShouldBind(&ci)
+	res, err := cs.GetAllCountries()
 	if err != nil {
-		cs.Logger.Infof("err get country id :%s", err.Error())
+		c.AbortWithStatusJSON(400, gin.H{
+			"error": err.Error(),
+		})
+		return
 	}
-	cs.GetByID(c, ci.Id)
+	c.JSON(200, res)
+
+}
+
+// AssignCityToCountry godoc
+// @Summary Assign cities to a country
+// @Description Assign a list of cities to a specified country by country ID
+// @Tags country
+// @Accept  x-www-form-urlencoded
+// @Produce  json
+// @Param   cities     formData  []string  true  "Array of city names"
+// @Param   countryid  formData  int       true  "Country ID"
+// @Success 200 {object} helper.HTTPResponse "Success"
+// @Failure 400 {object} helper.HTTPResponse "Failed"
+// @Router /c/assign/cities [post]
+func (cities CitiesAssined) AssignCityToCountry(c *gin.Context) {
+	fmt.Println(c.Request)
+	modelCityList := []models.City{}
+	cfg := config.GetConfig()
+
+	err := c.ShouldBind(&cities)
+	if err != nil {
+		c.AbortWithStatusJSON(400, gin.H{
+			"error": err.Error(),
+		})
+		return
+	}
+	cs := services.NewCountryService(cfg)
+	for index := range cities.Cities{
+		cMap := map[string]string{
+			"name": cities.Cities[index],
+		}
+		res, err := helper.TypeConverter[models.City](cMap)
+		if err != nil {
+			c.AbortWithStatusJSON(400, gin.H{
+				"error": err.Error(),
+			})
+			return
+		}
+		modelCityList = append(modelCityList, *res)
+	}
+
+	res, err := cs.AssignCity(c, modelCityList, cities.CountryID)
+	if err != nil {
+		c.AbortWithStatusJSON(400, gin.H{
+			"error": err.Error(),
+		})
+		return
+	}
+	c.JSON(200, res)
+
 }

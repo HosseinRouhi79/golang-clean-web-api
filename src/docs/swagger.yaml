@@ -26,6 +26,39 @@ definitions:
 info:
   contact: {}
 paths:
+  /c/assign/cities:
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      description: Assign a list of cities to a specified country by country ID
+      parameters:
+      - collectionFormat: csv
+        description: Array of city names
+        in: formData
+        items:
+          type: string
+        name: cities
+        required: true
+        type: array
+      - description: Country ID
+        in: formData
+        name: countryid
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: '#/definitions/helper.HTTPResponse'
+        "400":
+          description: Failed
+          schema:
+            $ref: '#/definitions/helper.HTTPResponse'
+      summary: Assign cities to a country
+      tags:
+      - country
   /c/create:
     post:
       consumes:
@@ -64,6 +97,54 @@ paths:
         name: id
         required: true
         type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: '#/definitions/helper.HTTPResponse'
+        "400":
+          description: Failed
+          schema:
+            $ref: '#/definitions/helper.HTTPResponse'
+      security:
+      - AuthBearer: []
+      summary: Country
+      tags:
+      - country
+  /c/get/{id}:
+    get:
+      consumes:
+      - application/x-www-form-urlencoded
+      description: Get country
+      parameters:
+      - description: country id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: '#/definitions/helper.HTTPResponse'
+        "400":
+          description: Failed
+          schema:
+            $ref: '#/definitions/helper.HTTPResponse'
+      security:
+      - AuthBearer: []
+      summary: Country
+      tags:
+      - country
+  /c/get/all:
+    get:
+      consumes:
+      - application/x-www-form-urlencoded
+      description: Get country
       produces:
       - application/json
       responses:

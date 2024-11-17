@@ -128,9 +128,49 @@ func (cs *CountryService) GetByID(ctx context.Context, id string) (res *dto.Coun
 		cs.Logger.Info(logging.Postgres, logging.Select, err.Error(), nil)
 	}
 	res = &dto.CountryResponse{
-		Id: strconv.Itoa(country.Id),
+		Id:   strconv.Itoa(country.Id),
 		Name: country.Name,
-
 	}
+
 	return res, nil
+}
+
+// get all countries
+func (cs *CountryService) GetAllCountries() (res []models.Country, err error) {
+	var countries []models.Country
+	err = cs.DB.
+		Model(&models.Country{}).
+		Preload("Cities").
+		Find(&countries).Error
+	if err != nil {
+		cs.Logger.Info(logging.Postgres, logging.Select, err.Error(), nil)
+	}
+	return countries, nil
+}
+
+// assign city
+func (cs *CountryService) AssignCity(ctx context.Context, cities []models.City, cID int) (res models.Country, err error) {
+	var country = models.Country{}
+
+	err = cs.DB.
+		Model(&models.Country{}).
+		Where("id = ?", cID).
+		First(&country).Error
+	if err != nil {
+		cs.Logger.Info(logging.Postgres, logging.Select, err.Error(), nil)
+	}
+
+	for _, v := range cities {
+		var cityDTO = models.City{}
+		cityDTO.Id = v.Id
+		cityDTO.Name = v.Name
+		cityDTO.Country = country
+		err = cs.DB.Create(&cityDTO).Error
+		if err != nil {
+			cs.Logger.Info(logging.Postgres, logging.Insert, err.Error(), nil)
+			return country, err
+		}
+	}
+
+	return country, nil
 }
