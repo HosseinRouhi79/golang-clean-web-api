@@ -16,3 +16,8 @@ type Filter struct {
 	From string `json:"from"`
 	To string `json:"to"`
 }
+
+type DynamicFilter struct {
+	Sort []Sort `json:"sort"`
+	Filters map[string]Filter `json:"filters"`
+}
