@@ -105,6 +105,11 @@ func (userService *UserService) RegisterLoginByMobile(dto dto.RegisterLoginByMob
 	user := models.User{Mobile: dto.Mobile, Username: dto.Mobile}
 
 	if !exists {
+		err = userService.Otp.ValidateOtp(dto.Mobile, dto.Otp)
+		if err != nil {
+			userService.Logger.Info(logging.OTP, logging.Select, err.Error(), nil)
+			return nil, err
+		}
 		password := helper.GeneratePassword()
 		bp := []byte(password)
 		hp, err := bcrypt.GenerateFromPassword(bp, bcrypt.DefaultCost)
