@@ -1,0 +1,19 @@
+{"level":"info","ts":"2025-04-16T10:56:18.673+0330","msg":"Redis connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
+{"level":"info","ts":"2025-04-16T10:56:18.710+0330","msg":"Postgres connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Migration"}
+{"level":"info","ts":"2025-04-16T10:56:24.606+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Latency":0.000265052,"Category":"RequestResponse","SubCategory":"Api","Path":"/swagger/index.html"}
+{"level":"info","ts":"2025-04-16T10:56:24.633+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/swagger/swagger-ui.css","Latency":0.004053258,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-04-16T10:56:24.706+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Latency":0.06086354,"Category":"RequestResponse","SubCategory":"Api","Path":"/swagger/swagger-ui-bundle.js"}
+{"level":"info","ts":"2025-04-16T10:56:24.716+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/swagger/swagger-ui-standalone-preset.js","Latency":0.058344159,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-04-16T10:56:24.870+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/swagger/doc.json","Latency":0.000957857,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-04-16T10:56:24.873+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/swagger/favicon-32x32.png","Latency":0.000052471,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-04-16T10:56:33.955+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Category":"RequestResponse","SubCategory":"Api","Path":"/api/up-login","Latency":0.208838243}
+{"level":"info","ts":"2025-04-16T10:58:44.620+0330","msg":"Record(username) not found","AppName":"myApp","LoggerName":"Zap","SubCategory":"Api","Category":"Postgres"}
+{"level":"info","ts":"2025-04-16T10:58:44.620+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Category":"RequestResponse","SubCategory":"Api","Path":"/api/up-login","Latency":0.043235801}
+{"level":"info","ts":"2025-04-16T10:58:47.470+0330","msg":"Record(username) not found","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Api"}
+{"level":"info","ts":"2025-04-16T10:58:47.470+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/up-login","Latency":0.039442674,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-04-16T10:58:48.691+0330","msg":"Record(username) not found","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Api"}
+{"level":"info","ts":"2025-04-16T10:58:48.692+0330","msg":"","AppName":"myApp","LoggerName":"Zap","SubCategory":"Api","Path":"/api/up-login","Latency":0.039106452,"Category":"RequestResponse"}
+{"level":"info","ts":"2025-04-16T10:58:53.597+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/up-login","Latency":0.192596863,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-04-16T10:58:55.044+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Latency":0.234129822,"Category":"RequestResponse","SubCategory":"Api","Path":"/api/up-login"}
+{"level":"info","ts":"2025-04-16T10:58:56.452+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/up-login","Latency":0.238993731,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-04-16T10:59:13.952+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/c/get/all","Latency":0.062418794,"Category":"RequestResponse","SubCategory":"Api"}

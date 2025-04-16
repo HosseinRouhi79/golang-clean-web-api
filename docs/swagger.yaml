@@ -1,3 +1,4 @@
+basePath: /api/v1
 definitions:
   helper.HTTPResponse:
     properties:
@@ -23,8 +24,15 @@ definitions:
       value:
         type: string
     type: object
+host: localhost:5005
 info:
-  contact: {}
+  contact:
+    email: support@example.com
+    name: API Support
+    url: http://www.example.com/support
+  description: This is my API server.
+  title: My API
+  version: "1.0"
 paths:
   /c/assign/cities:
     post:
@@ -316,6 +324,35 @@ paths:
           schema:
             $ref: '#/definitions/helper.HTTPResponse'
       summary: Send OTP request
+      tags:
+      - auth
+  /up-login/:
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      description: Register Login up
+      parameters:
+      - description: Username
+        in: formData
+        name: username
+        required: true
+        type: string
+      - description: Password
+        in: formData
+        name: password
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: '#/definitions/helper.HTTPResponse'
+        "400":
+          description: Failed
+          schema:
+            $ref: '#/definitions/helper.HTTPResponse'
+      summary: User Auth up
       tags:
       - auth
   /v1/health/:

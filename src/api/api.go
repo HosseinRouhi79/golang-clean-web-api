@@ -4,11 +4,11 @@ import (
 	"fmt"
 	"log"
 
+	"github.com/HosseinRouhi79/golang-clean-web-api/docs"
 	"github.com/HosseinRouhi79/golang-clean-web-api/src/api/middlewares"
 	"github.com/HosseinRouhi79/golang-clean-web-api/src/api/routers"
 	"github.com/HosseinRouhi79/golang-clean-web-api/src/api/validation"
 	"github.com/HosseinRouhi79/golang-clean-web-api/src/config"
-	"github.com/HosseinRouhi79/golang-clean-web-api/src/docs"
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/binding"
 	"github.com/go-playground/validator/v10"
@@ -20,12 +20,12 @@ func InitServer(cfg *config.Config) {
 	r := gin.New()
 	RegisterMainValidation()
 	r.Use(gin.Logger(), gin.Recovery(), middlewares.Limitter(), middlewares.StructuredMiddleware()) // => r1 := gin.Default()
-
 	RegisterRoute(r)
 	RegisterSwagger(r, cfg)
 	if err := r.Run(fmt.Sprintf(":%s", cfg.Server.InternalPort)); err != nil {
 		panic(err)
 	}
+
 }
 
 func RegisterMainValidation() {
@@ -43,11 +43,11 @@ func RegisterMainValidation() {
 }
 
 func RegisterSwagger(r *gin.Engine, cfg *config.Config) {
-	docs.SwaggerInfo.Title = "golang web api"
+	docs.SwaggerInfo.Title = "golang web api2"
 	docs.SwaggerInfo.Description = "golang web api"
 	docs.SwaggerInfo.Version = "1.0"
 	docs.SwaggerInfo.BasePath = "/api"
-	docs.SwaggerInfo.Host = fmt.Sprintf("192.168.59.133:%s", cfg.Server.ExternalPort)
+	docs.SwaggerInfo.Host = fmt.Sprintf("192.168.136.129:%s", cfg.Server.ExternalPort)
 	docs.SwaggerInfo.Schemes = []string{"http"}
 
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))

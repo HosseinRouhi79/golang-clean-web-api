@@ -69,3 +69,5 @@ func (h UserHandler) SendOtp(c *gin.Context) {
 		"OTP":    strconv.Itoa(otpCode),
 	})
 }
+
+

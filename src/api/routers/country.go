@@ -20,4 +20,5 @@ func Country(r *gin.RouterGroup) {
 	r.GET("/c/get/:id", middlewares.Authentication(cfg), handlers.GetByID)
 	r.GET("/c/get/all", middlewares.Authentication(cfg), handlers.GetAllCountries)
 	r.POST("/c/assign/cities", handlerAssign.AssignCityToCountry)
+	r.POST("/c/filter", handlers.KMP)
 }
